@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.home_fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg1" />
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="200dp"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="top"
+        android:text="Hallo, Dimas !"
+        android:textColor="#fff"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/poppins_medium" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/txt1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="top"
+        android:text="8 August 2021"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:fontFamily="@font/poppins_medium" />
+
+
+
+
+    <GridLayout
+        android:id="@+id/gridAtas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:rowCount="3"
+        android:padding="7dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_todo"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="130dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/todo"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:text="Todo list"
+                    android:textAlignment="center"
+                    android:textColor="#5292FA"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/ubuntu_medium" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_jadwal"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="130dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/jadwal"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jadwal"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#5292FA"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+    <GridLayout
+        android:id="@+id/grid2"
+        android:layout_below="@+id/gridAtas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:rowCount="3"
+        android:padding="7dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_motivasi"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/motivasi"
+                        android:scaleType="fitXY"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Motivasi"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#5292FA"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_target"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="50dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/target"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Target"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#5292FA"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+    <GridLayout
+        android:layout_below="@+id/grid2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:rowCount="3"
+        android:padding="7dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_belajar"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/belajar"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Belajar"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#5292FA"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_main_konsul"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="50dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="78dp"
+                        android:layout_height="78dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/elipscard" />
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/konsul"
+                        android:layout_marginBottom="20dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Konsul"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#5292FA"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+
+
+
+</RelativeLayout>
