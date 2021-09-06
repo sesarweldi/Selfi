@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,138 +7,225 @@
     android:orientation="vertical"
     tools:context=".SignupActivity">
 
-    <TextView
-        android:id="@+id/txt_login"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Sign up"
-        android:textColor="#000"
-        android:textSize="35sp"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Sign up"
+            android:textColor="#000"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
 
-    <View
-        android:layout_width="77dp"
-        android:layout_height="5dp"
-        android:layout_marginLeft="30dp"
-        android:background="@drawable/roundedshape" />
+        <View
+            android:layout_width="77dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshape" />
 
-    <TextView
-        android:id="@+id/txt_nama"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Nama"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txt_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nama"
+            android:textColor="#000"
+            android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/edt_nama"
-        android:layout_width="320dp"
-        android:layout_height="34dp"
-        android:layout_below="@+id/txt_email"
-        android:background="@drawable/roundedshapeedittxt"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Nama"
-        android:layout_marginLeft="30dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"/>
+        <EditText
+            android:id="@+id/edt_nama"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_email"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Nama"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic" />
 
-    <TextView
-        android:id="@+id/txt_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Email"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txt_nis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="NIS"
+            android:textColor="#000"
+            android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/edt_email"
-        android:layout_width="320dp"
-        android:layout_height="34dp"
-        android:layout_below="@+id/txt_email"
-        android:background="@drawable/roundedshapeedittxt"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Email"
-        android:layout_marginLeft="30dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"/>
+        <EditText
+            android:id="@+id/edt_nis"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_email"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="NIS"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:inputType="number"
+            android:digits="1234567890"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Password"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Password"
+            android:textColor="#000"
+            android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/edt_password"
-        android:layout_width="320dp"
-        android:layout_height="34dp"
-        android:layout_below="@+id/txt_email"
-        android:background="@drawable/roundedshapeedittxt"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Password"
-        android:layout_marginLeft="30dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"/>
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_email"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Password"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:inputType="textPassword"
+            app:passwordToggleEnabled="true"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Repeat Password"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Repeat Password"
+            android:textColor="#000"
+            android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/edt_repeatpass"
-        android:layout_width="320dp"
-        android:layout_height="34dp"
-        android:layout_below="@+id/txt_email"
-        android:background="@drawable/roundedshapeedittxt"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Repeat password"
-        android:layout_marginLeft="30dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"/>
+        <EditText
+            android:id="@+id/edt_repeatpass"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_email"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Repeat password"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:inputType="textPassword"
+            app:passwordToggleEnabled="true"/>
+
+        <TextView
+            android:id="@+id/txt_jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Jurusan"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edt_jurusan"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_jurusan"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Nama"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/txt_noWa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nomor Whatsapp"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edt_noWa"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/txt_noWa"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Nomor Whatsapp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Kelas"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edt_kelas"
+            android:layout_width="320dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedshapeedittxt"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Kelas"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:textStyle="italic" />
 
 
-    <Button
-        android:id="@+id/btn_selanjutnya"
-        android:layout_width="150dp"
-        android:layout_height="34dp"
-        android:background="@drawable/roundedshape"
-        android:layout_marginTop="50dp"
-        android:text="Selanjutnya"
-        android:textColor="#fff"
-        android:fontFamily="@font/poppins_medium"
-        android:textAllCaps="false"
-        android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="125dp"
+            android:layout_height="34dp"
+            android:background="@drawable/roundedshape"
+            android:layout_marginTop="50dp"
+            android:text="Sign up"
+            android:textColor="#fff"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"/>
+
+    </LinearLayout>
 
 
-
-
-</LinearLayout>
+</ScrollView>
