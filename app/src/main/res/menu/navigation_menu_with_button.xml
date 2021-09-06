@@ -4,10 +4,10 @@
 
     <item
        android:id="@+id/home"
-        android:title="Home"
-        app:cnb_iconColor="@color/colorPrimaryDark"
+        android:title="Notif"
+        app:cnb_iconColor="#fff"
         app:cnb_backgroundColor="@color/colorPrimaryDark"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_notifications"
         />
 
     <item
@@ -31,7 +31,7 @@
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        app:cnb_iconColor="@color/colorPrimaryDark"
+        app:cnb_iconColor="#fff"
         app:cnb_backgroundColor="@color/colorPrimaryDark"
         android:icon="@drawable/ic_person"
         />

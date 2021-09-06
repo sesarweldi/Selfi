@@ -24,30 +24,6 @@ class home_fragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_fragment, container, false)
 
-        card_main_target.setOnClickListener{
-            startActivity(Intent(activity, TargetActivity::class.java))
-        }
 
-        card_main_belajar.setOnClickListener{
-            startActivity((Intent(activity, BelajarActivity::class.java)))
-        }
-
-        card_main_jadwal.setOnClickListener {
-            startActivity(Intent(activity, JadwalActivity::class.java))
-        }
-
-        card_main_konsul.setOnClickListener {
-            startActivity(Intent(activity, KonsulActivity::class.java))
-        }
-
-        card_main_motivasi.setOnClickListener {
-            startActivity(Intent(activity, MotivasiActivity::class.java))
-        }
-
-        card_main_todo.setOnClickListener {
-            startActivity(Intent(activity, TodolistActivity::class.java))
-        }
     }
-
-
 }

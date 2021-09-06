@@ -7,5 +7,41 @@
     tools:context=".MainActivity">
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6BA8FF"
+        android:src="@drawable/ic_home"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:maxImageSize="40dp"
+        app:tint="#fff"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="#fff"
+        app:fabCradleMargin="6dp"
+        app:fabCradleRoundedCornerRadius="80dp">
+
+
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/chip_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:cnb_iconSize="30dp"
+        app:cnb_menuResource="@menu/navigation_menu_with_button"
+        app:cnb_radius="28dp"
+        app:cnb_unselectedColor="#5A99FA"/>
+        <!--app:cnb_unselectedColor="#5A99FA"-->
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
