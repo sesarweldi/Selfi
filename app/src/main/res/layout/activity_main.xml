@@ -2,9 +2,16 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:id="@+id/root_layout"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,7 +21,8 @@
         android:src="@drawable/ic_home"
         app:layout_anchor="@id/bottom_app_bar"
         app:maxImageSize="40dp"
-        app:tint="#fff"/>
+        app:tint="#fff"
+        android:onClick="floating_button"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"

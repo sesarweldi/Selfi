@@ -1,14 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.profile_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg" />
+
+    <LinearLayout
+        android:id="@+id/grup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_item_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_launcher" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/poppins_medium"
+                android:maxLines="1"
+                android:text="Sesar Weldi Harisna Wijaya"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="Cek kegiatan kalian hari ini !"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_medium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/grup1"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp">
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="160dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/textCard_tugas_selesai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0"
+                android:textSize="35sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tugas Selesai"
+                android:layout_gravity="bottom|center"
+                android:padding="4dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="160dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="14dp">
+            <TextView
+                android:id="@+id/textCard_tugas_tertunda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0"
+                android:textSize="35sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tugas Tertunda"
+                android:layout_gravity="bottom|center"
+                android:padding="4dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"/>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="35dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Target di bulan ini"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="35dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Jadwal kegiatan hari ini"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#000"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

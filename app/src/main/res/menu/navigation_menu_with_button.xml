@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-       android:id="@+id/home"
+       android:id="@+id/notif"
         android:title="Notif"
         app:cnb_iconColor="#fff"
         app:cnb_backgroundColor="@color/colorPrimaryDark"

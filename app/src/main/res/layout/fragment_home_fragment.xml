@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="fitXY"
-        android:src="@drawable/bg1" />
+        android:src="@drawable/bg" />
 
     <TextView
         android:id="@+id/txt1"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -23,11 +23,12 @@
         android:layout_marginTop="35dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="top"
-        android:text="Hallo, Dimas !"
+        android:text="Hallo, Sesar Weldi Harisna Wijaya Karya Hebat Anjir"
         android:textColor="#fff"
-        android:textSize="26sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        app:fontFamily="@font/poppins_medium" />
+        app:fontFamily="@font/poppins_medium"
+        android:maxLines="1"/>
 
     <TextView
         android:layout_width="200dp"
@@ -38,9 +39,8 @@
         android:fontFamily="@font/poppins_medium"
         android:gravity="top"
         android:text="8 August 2021"
-        android:textColor="#000"
-        android:textSize="18sp"
-        app:fontFamily="@font/poppins_medium" />
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
 
 

@@ -9,16 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Signup2Activity"></activity>
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".KonsulActivity" />
-        <activity android:name=".BelajarActivity" />
-        <activity android:name=".TargetActivity" />
-        <activity android:name=".MotivasiActivity" />
-        <activity android:name=".JadwalActivity" />
-        <activity android:name=".TodolistActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.SignupActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.KonsulActivity" />
+        <activity android:name=".activity.BelajarActivity" />
+        <activity android:name=".activity.TargetActivity" />
+        <activity android:name=".activity.MotivasiActivity" />
+        <activity android:name=".activity.JadwalActivity" />
+        <activity android:name=".activity.TodolistActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

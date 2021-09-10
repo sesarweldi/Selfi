@@ -1,7 +1,8 @@
-package com.selfi
+package com.selfi.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.selfi.R
 
 class MotivasiActivity : AppCompatActivity() {
 
