@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MotivasiActivity">
+    tools:context=".activity.MotivasiActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <include
+        android:id="@+id/motivasi_toolbar"
+        layout="@layout/toolbar_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ACTIVITY MOTIVASI"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:textSize="50sp"/>
+        android:layout_alignParentTop="true" />
 
-</RelativeLayout>
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="173dp"
+        android:src="@drawable/banner_motivasi"
+        android:layout_marginTop="9dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="294dp"
+        android:layout_height="35dp"
+        android:queryHint="Search..."
+        android:iconifiedByDefault="false"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/roundedshapesearch"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+
+
+</LinearLayout>

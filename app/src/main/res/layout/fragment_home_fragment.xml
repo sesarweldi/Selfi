@@ -44,7 +44,6 @@
 
 
 
-
     <GridLayout
         android:id="@+id/gridAtas"
         android:layout_width="match_parent"

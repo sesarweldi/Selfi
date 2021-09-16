@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.BelajarActivity">
+    tools:context=".activity.BelajarActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <include
+        android:id="@+id/belajar_toolbar"
+        layout="@layout/toolbar_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ACTIVITY BELAJAR"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:textSize="50sp"/>
+        android:layout_alignParentTop="true" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab_layout"
+        android:backgroundTint="#357BFC"
+        app:tabTextColor="#fff"
+        app:tabTextAppearance="@style/tab_text"
+        app:tabSelectedTextColor="#fff"
+        app:tabIndicatorColor="#fff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/tab_layout"
+        android:background="@drawable/tab_dropshadow" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager_2"/>
 
 
 
-</RelativeLayout>
+
+
+
+</LinearLayout>

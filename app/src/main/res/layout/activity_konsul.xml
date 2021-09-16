@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.KonsulActivity">
+    tools:context=".activity.KonsulActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <include
+        android:id="@+id/konsul_toolbar"
+        layout="@layout/toolbar_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ACTIVITY KONSUL"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:textSize="50sp"/>
+        android:layout_alignParentTop="true" />
 
-</RelativeLayout>
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="173dp"
+        android:src="@drawable/banner_konsultasi"
+        android:layout_marginTop="9dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_konsul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_konsul" />
+
+
+
+
+
+
+</LinearLayout>

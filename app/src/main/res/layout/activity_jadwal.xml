@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.JadwalActivity">
+    tools:context=".activity.JadwalActivity"
+    android:orientation="vertical">
 
+    <include
+        android:id="@+id/jadwal_toolbar"
+        layout="@layout/toolbar_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="173dp"
+        android:src="@drawable/banner_jadwal"
+        android:layout_marginTop="9dp"
+        android:layout_gravity="center_horizontal"/>
+    
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ACTIVITY JADWAL"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:textSize="50sp"/>
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="Jadwal Pelajaran"
+        android:layout_marginLeft="30dp"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/txt_Jadwal_Mapel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:textColor="#000"
+        android:text="XII SIJA 2"
+        android:layout_marginLeft="34dp"
+        android:textSize="14sp" />
+
+
+
+</LinearLayout>
