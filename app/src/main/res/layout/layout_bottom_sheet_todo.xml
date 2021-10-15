@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    android:id="@+id/btnsheetTodoContainer">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Masukkan tugas baru kamu"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/edt_inputTodo"
+        android:layout_width="320dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="Masukkan tugas baru kamu"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"/>
+
+    <TextView
+        android:id="@+id/txt_nis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Masukkan Tanggal"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/edt_inputTanggalTodo"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="00/00/0000"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:inputType="date"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Jam"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/edt_inputJamTodo"
+        android:layout_width="70dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="00/00"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:inputType="date"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"/>
+
+    <Button
+        android:id="@+id/btn_simpanTodo"
+        android:layout_width="103dp"
+        android:layout_height="45dp"
+        android:background="@drawable/roundedshape"
+        android:layout_below="@+id/edt_passwordLogin"
+        android:layout_marginTop="36dp"
+        android:layout_centerInParent="true"
+        android:text="Simpan"
+        android:textColor="#fff"
+        android:theme="@style/MyButtonStyle"
+        android:fontFamily="@font/poppins_medium"
+        android:textAllCaps="false"
+        android:layout_gravity="end"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="38dp"/>
+
+
+
+</LinearLayout>

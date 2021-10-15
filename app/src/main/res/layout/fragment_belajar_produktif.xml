@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.BelajarProduktifFragment">
+    tools:context=".ui.fragment.BelajarProduktifFragment">
 
     <ImageView
         android:layout_width="360dp"
@@ -13,12 +13,25 @@
         android:layout_marginTop="9dp"
         android:layout_gravity="center_horizontal"/>
 
-    <TextView
+    <SearchView
+        android:id="@+id/search_produktif"
+        android:layout_width="294dp"
+        android:layout_height="35dp"
+        android:queryHint="Search..."
+        android:iconifiedByDefault="false"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/roundedshapesearch"
+        android:layout_gravity="center_horizontal"
+        android:theme="@style/SearchViewStyle"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_belajarProduktif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Produktif"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
-        android:textSize="50sp"/>
+        tools:listitem="@layout/item_belajar"
+        />
 
 </LinearLayout>

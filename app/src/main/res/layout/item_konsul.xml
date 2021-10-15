@@ -7,13 +7,16 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardItemKonsul"
         android:layout_width="310dp"
         android:layout_height="90dp"
-        android:elevation="8dp"
+        app:cardElevation="2dp"
         android:layout_gravity="center"
         android:layout_marginTop="19dp"
         app:cardCornerRadius="15dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +38,8 @@
         <TextView
             android:id="@+id/text_namaGuru"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:textSize="18sp"
+            android:layout_height="27dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:text="Nama Guru"
             android:fontFamily="@font/poppins_medium"

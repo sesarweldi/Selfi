@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Judul"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/edt_inputJudulTarget"
+        android:layout_width="320dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="Masukkan Judul"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:textColorHint="#4D000000"
+        android:textColor="#000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Desktipsi target"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/edt_inputDeskripsiTarget"
+        android:layout_width="320dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="Masukkan Kegiatan"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"/>
+
+
+
+    <Button
+        android:id="@+id/btn_simpanTarget"
+        android:layout_width="103dp"
+        android:layout_height="45dp"
+        android:background="@drawable/roundedshape"
+        android:layout_below="@+id/edt_passwordLogin"
+        android:layout_marginTop="36dp"
+        android:layout_centerInParent="true"
+        android:text="Simpan"
+        android:textColor="#fff"
+        android:theme="@style/MyButtonStyle"
+        android:fontFamily="@font/poppins_medium"
+        android:textAllCaps="false"
+        android:layout_gravity="end"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="38dp"/>
+
+</LinearLayout>

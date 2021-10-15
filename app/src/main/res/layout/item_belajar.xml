@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_item_belajar"
+        android:layout_width="148dp"
+        android:layout_marginTop="12dp"
+        android:layout_height="217dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/img_cover_buku"
+        android:layout_width="82dp"
+        android:layout_height="120dp"
+        tools:src="@drawable/gambar_buku"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14dp"/>
+
+        <TextView
+            android:id="@+id/judul_buku"
+            android:layout_width="match_parent"
+            android:paddingEnd="15dp"
+            android:layout_height="20dp"
+            android:text="Judul Buku Apasaja"
+            android:textAlignment="center"
+            android:ellipsize="end"
+            android:textColor="#000"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="137dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:paddingStart="10dp"/>
+
+        <TextView
+            android:id="@+id/penulis_buku"
+            android:layout_width="102dp"
+            android:layout_height="14dp"
+            android:text="Penulisnya"
+            android:ellipsize="end"
+            android:textColor="#80000000"
+            android:layout_marginTop="170dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:textSize="9sp"
+            android:layout_marginLeft="11dp"/>
+
+        <TextView
+            android:id="@+id/penerbit_buku"
+            android:layout_width="102dp"
+            android:layout_height="14dp"
+            android:text="Penerbit"
+            android:ellipsize="end"
+            android:textColor="#80000000"
+            android:layout_marginTop="187dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:textSize="9sp"
+            android:layout_marginLeft="11dp"/>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
+
+

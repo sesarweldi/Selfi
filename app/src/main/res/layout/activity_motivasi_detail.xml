@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MotivasiDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/rectangle_8"
+                android:layout_width="200dp"
+                android:layout_height="53dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/right_corner_motivasi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Motivasi"
+                android:layout_marginTop="23dp"
+                android:textSize="27sp"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginLeft="29dp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_close_motivasi"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_close"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="134dp"/>
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/judul_motivasi_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="asdasd asd asd asd as asdknsa jknsaj dnasjkd nasjd nasjk dnasj nasjk dnasj dnakajnd jsa n"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/lato"
+            android:textColor="#000" />
+
+    <ImageView
+        android:id="@+id/img_detail_motivasi"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        tools:src="@drawable/banner_motivasi"
+        android:layout_marginTop="18dp"/>
+
+
+
+    <TextView
+        android:id="@+id/txt_deskripsi_motivasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:lineSpacingExtra="6dp"
+        tools:text="oks"
+        android:textColor="#000"
+        android:padding="25dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,4 +1,4 @@
-package com.selfi.activity
+package com.selfi.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.selfi.R
-import com.selfi.fragment.home_fragment
-import com.selfi.fragment.notifFragment
-import com.selfi.fragment.profile_fragment
+import com.selfi.ui.fragment.home_fragment
+import com.selfi.ui.fragment.notifFragment
+import com.selfi.ui.fragment.profile_fragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    //    val window= window
-      //  window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         constraint = findViewById(R.id.coordinator)
 
         chipNavigationBar=findViewById(R.id.chip_app_bar)

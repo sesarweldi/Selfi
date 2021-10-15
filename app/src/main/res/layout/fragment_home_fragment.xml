@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.home_fragment">
+    tools:context=".ui.fragment.home_fragment"
+    android:background="#E5E5E5">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
@@ -14,8 +15,8 @@
         android:src="@drawable/bg" />
 
     <TextView
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_name_home"
+        android:layout_width="250dp"
         android:layout_height="39dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -23,7 +24,7 @@
         android:layout_marginTop="35dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="top"
-        android:text="Hallo, Sesar Weldi Harisna Wijaya Karya Hebat Anjir"
+        tools:text="Hallo, Sesar Weldi Harisna Wijaya"
         android:textColor="#fff"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -31,9 +32,10 @@
         android:maxLines="1"/>
 
     <TextView
+        android:id="@+id/tv_tanggal_home"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_below="@id/txt1"
+        android:layout_below="@id/tv_name_home"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/poppins_medium"
@@ -43,7 +45,6 @@
         android:textSize="18sp" />
 
 
-
     <GridLayout
         android:id="@+id/gridAtas"
         android:layout_width="match_parent"
@@ -51,8 +52,8 @@
         android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:columnOrderPreserved="false"
-        android:rowCount="3"
-        android:padding="7dp">
+        android:padding="7dp"
+        android:rowCount="3">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_main_todo"
@@ -62,9 +63,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="130dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="3dp"
-            android:layout_marginBottom="20dp">
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,8 +92,8 @@
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="50dp"
-                        android:src="@drawable/todo"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/todo" />
                 </RelativeLayout>
 
                 <TextView
@@ -114,10 +117,12 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="40dp"
-            android:layout_marginRight="50dp"
             android:layout_marginTop="130dp"
+            android:layout_marginRight="50dp"
             app:cardCornerRadius="25dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -141,23 +146,24 @@
                         android:layout_height="45dp"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="50dp"
-                        android:src="@drawable/jadwal"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/jadwal" />
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jadwal"
                     android:fontFamily="@font/ubuntu_medium"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:text="Jadwal"
+                    android:textAlignment="center"
                     android:textColor="#5292FA"
-                    android:textAlignment="center"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>
+
     <GridLayout
         android:id="@+id/grid2"
         android:layout_below="@+id/gridAtas"
@@ -178,7 +184,9 @@
             android:layout_marginLeft="40dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="3dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -229,7 +237,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="50dp"
             app:cardCornerRadius="25dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -289,7 +299,9 @@
             android:layout_marginLeft="40dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="3dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -339,7 +351,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="50dp"
             app:cardCornerRadius="25dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"

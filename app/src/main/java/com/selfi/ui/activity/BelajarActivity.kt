@@ -1,14 +1,12 @@
-package com.selfi.activity
+package com.selfi.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.selfi.R
 import com.selfi.adapter.ViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_belajar.view.*
 import kotlinx.android.synthetic.main.toolbar_activity.*
 
 class BelajarActivity : AppCompatActivity() {

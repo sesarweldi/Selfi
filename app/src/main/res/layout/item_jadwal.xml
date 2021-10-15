@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_parent_jadwal"
         android:layout_width="315dp"
         android:layout_height="160dp"
         app:cardCornerRadius="15dp"
@@ -21,20 +23,20 @@
             android:id="@+id/rectangle_8"
             android:layout_width="115dp"
             android:layout_height="32dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="19dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/right_corner"/>
 
         <TextView
-            android:id="@+id/hari_jadwal"
+            android:id="@+id/txt_hari_jadwal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Minggu"
             android:textColor="#fff"
             android:layout_marginTop="19dp"
             android:layout_marginLeft="35dp"
-            android:textSize="17sp"
+            android:textSize="18sp"
             android:fontFamily="@font/montserrat"
             android:textStyle="bold"/>
 
@@ -45,18 +47,15 @@
             android:layout_marginTop="27dp"
             android:layout_marginLeft="17dp"/>
 
-        <TextView
-            android:id="@+id/text_mapelJadwal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mapel"
-            android:fontFamily="@font/montserrat"
-            android:textSize="14sp"
-            android:textColor="#fff"
-            android:layout_gravity="center"/>
-
-
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_child_jadwal"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="10dp"
+            tools:listitem="@layout/item_target_child"/>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

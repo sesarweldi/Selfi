@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.selfi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SignupActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.KonsulActivity" />
-        <activity android:name=".activity.BelajarActivity" />
-        <activity android:name=".activity.TargetActivity" />
-        <activity android:name=".activity.MotivasiActivity" />
-        <activity android:name=".activity.JadwalActivity" />
-        <activity android:name=".activity.TodolistActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".ui.activity.MotivasiDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.SignupActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.KonsulActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.BelajarActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.TargetActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.MotivasiActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.JadwalActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.TodolistActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.MainActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
