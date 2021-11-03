@@ -14,6 +14,15 @@
         android:scaleType="fitXY"
         android:src="@drawable/bg" />
 
+    <ImageView
+        android:id="@+id/img_exit"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_exit"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"/>
+
     <LinearLayout
         android:id="@+id/grup1"
         android:layout_width="match_parent"
@@ -144,7 +153,34 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="#000"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_judul_target_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                tools:text="Judul"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="35dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_deskripsi_target_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                tools:text="asjdajs ndsaidn asdn aksd nsakd naskdjnsanidn akdjnsakj naskdnakj naskjd naskj nasjkdn asjkn sakn"
+                android:fontFamily="@font/montserrat"
+                android:layout_marginTop="75dp"
+                android:paddingLeft="23dp"
+                android:paddingEnd="15dp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
 
 
         </androidx.cardview.widget.CardView>
@@ -166,7 +202,17 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="#000"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_jadwal_profile"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/rv_jadwal_profile"/>
 
 
         </androidx.cardview.widget.CardView>

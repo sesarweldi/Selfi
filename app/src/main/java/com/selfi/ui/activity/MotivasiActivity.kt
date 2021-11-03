@@ -27,65 +27,14 @@ class MotivasiActivity : AppCompatActivity() {
         toolbar_activity_back.setOnClickListener {
             onBackPressed()
         }
+        searchMotivasi("")
 
-        recyclerMotivasi()
-        swipe_motivasi.setOnRefreshListener {
-            recyclerMotivasi()
-        }
-
-
-
-        search_motivasi.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                searchMotivasi(query)
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                searchMotivasi(newText)
-                return false
-            }
-
-        })
     }
 
-    fun recyclerMotivasi() {
-        swipe_motivasi.isRefreshing = true
-        val service = ServiceBuilder.buildService(MotivasiService::class.java).getMotivasi()
-        service.enqueue(object : Callback<DataResponseModel<List<Motivasi>>> {
-            override fun onFailure(call: Call<DataResponseModel<List<Motivasi>>>, t: Throwable) {
-                Toast.makeText(
-                    this@MotivasiActivity,
-                    "Error : ${t.message}",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                Log.e("onFailure", t.message!!)
-            }
 
 
-            override fun onResponse(
-                call: Call<DataResponseModel<List<Motivasi>>>,
-                response: Response<DataResponseModel<List<Motivasi>>>
-            ) {
-                if (response.isSuccessful) {
-                    rv_motivasi.setHasFixedSize(true)
-                    rv_motivasi.layoutManager = LinearLayoutManager(this@MotivasiActivity)
-                    rv_motivasi.adapter =
-                        MotivasiRecyclerAdapter(response.body()!!.data!!, this@MotivasiActivity)
-                    rv_motivasi.adapter!!.notifyDataSetChanged()
-
-                } else {
-                    Toast.makeText(this@MotivasiActivity, "Error", Toast.LENGTH_SHORT).show()
-                }
-                swipe_motivasi.isRefreshing = false
-            }
-        })
-    }
-
-    fun searchMotivasi(key: String?) {
-        swipe_motivasi.isRefreshing = true
-        val service = ServiceBuilder.buildService(MotivasiService::class.java).searchMotivasi(key)
+    fun searchMotivasi(keyword: String?) {
+        val service = ServiceBuilder.buildService(MotivasiService::class.java).searchMotivasi(keyword)
         service.enqueue(object : Callback<DataResponseModel<List<Motivasi>>> {
             override fun onFailure(call: Call<DataResponseModel<List<Motivasi>>>, t: Throwable) {
                 Toast.makeText(
@@ -107,9 +56,19 @@ class MotivasiActivity : AppCompatActivity() {
                     rv_motivasi.adapter =
                         MotivasiRecyclerAdapter(response.body()!!.data!!, this@MotivasiActivity)
                     rv_motivasi.adapter!!.notifyDataSetChanged()
-                }
-                swipe_motivasi.isRefreshing = false
 
+                    search_motivasi.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean  {
+                            searchMotivasi(query)
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            searchMotivasi(newText)
+                            return false
+                        }
+                    })
+                }
             }
         })
     }

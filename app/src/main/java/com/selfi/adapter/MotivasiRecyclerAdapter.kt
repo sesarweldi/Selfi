@@ -34,14 +34,14 @@ class MotivasiRecyclerAdapter(private val mValues: List<Motivasi>, private val m
 
         val requestOptions = RequestOptions().transform(CenterCrop(), RoundedCorners(7))
         Glide.with(holder.itemView.context)
-            .load("https://selfi.laam.my.id/assets/sampul/" + item.sampul)
+            .load("https://selfi.laam.my.id/sampul/" + item.sampul)
             .apply(requestOptions)
             .into(holder.img_bannerMotivasi)
 
         holder.card_motivasi.setOnClickListener { view->
             val intent = Intent(mContext.applicationContext,MotivasiDetailActivity::class.java)
             intent.putExtra("deskripsi",item.deskripsi)
-            intent.putExtra("gambar","https://selfi.laam.my.id/assets/sampul/" + item.sampul)
+            intent.putExtra("gambar","https://selfi.laam.my.id/sampul/" + item.sampul)
             intent.putExtra("judul",item.judul)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             mContext.startActivity(intent)

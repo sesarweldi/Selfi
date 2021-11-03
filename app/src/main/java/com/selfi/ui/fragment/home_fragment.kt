@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.selfi.*
 import com.selfi.ui.activity.*
 import com.selfi.models.User
+import com.selfi.models.response.ResponseLogin
 import com.selfi.services.SharedPrefHelper
 import com.selfi.services.api.ServiceBuilder
 import com.selfi.services.api.UserService
@@ -80,19 +81,19 @@ class home_fragment : Fragment() {
         val pref = SharedPrefHelper(activity!!)
         ServiceBuilder.buildService(UserService::class.java)
             .getUserById(pref.getAccount().nis/*,1913949*/).enqueue(
-                object : Callback<User> {
+                object : Callback<ResponseLogin> {
                     override fun onResponse(
-                        call: Call<User>,
-                        response: Response<User>
+                        call: Call<ResponseLogin>,
+                        response: Response<ResponseLogin>
                     ) {
-//                        pref.saveUser(
-//                            response.body()!!
-//                        )
-                        response.body()
+                        pref.saveUser(
+                            response.body()!!.user!!
+                        )
+                   //     response.body()
                         setText()
                     }
 
-                    override fun onFailure(call: Call<User>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                         Toast.makeText(
                             activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
                         ).show()

@@ -31,8 +31,6 @@ class TargetActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-
-
         floating_target.setOnClickListener {
             val bottomSheetTarget = BSheetTargetFragment()
             bottomSheetTarget.show(supportFragmentManager, "TAG")
@@ -46,11 +44,9 @@ class TargetActivity : AppCompatActivity() {
         }
     }
 
-    //  private var nis: Int = 0
-    private fun recylerTarget() {
+    public fun recylerTarget() {
         swipe_target.isRefreshing = true
        val pref =  SharedPrefHelper.getInstance(applicationContext).getAccount()
-//        val pref = SharedPrefHelper(applicationContext)
         val service =
             ServiceBuilder.buildService(TargetService::class.java).getTarget(pref.nis)
 
@@ -59,7 +55,6 @@ class TargetActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Error : ${t.message}", Toast.LENGTH_SHORT)
                     .show()
             }
-
 
             override fun onResponse(
                 call: Call<DataResponseModel<List<Target>>>,
@@ -78,15 +73,10 @@ class TargetActivity : AppCompatActivity() {
                         rv_target.layoutManager =
                             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                         val adapter =
-                            TargetRecylerViewAdapter(response.body()!!.data!!, applicationContext)
+                            TargetRecylerViewAdapter(response.body()!!.data!!, this@TargetActivity)
                         rv_target.adapter = adapter
-                        adapter!!.notifyDataSetChanged()
+                        rv_target.adapter!!.notifyDataSetChanged()
 
-
-
-
-                      //  adapter.updatedData(response.body()!!.data!!)
-                        //adapter.notifyDataSetChanged()
                     }
                     swipe_target.isRefreshing = false
 

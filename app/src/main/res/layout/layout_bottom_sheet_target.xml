@@ -17,7 +17,8 @@
     <EditText
         android:id="@+id/edt_inputJudulTarget"
         android:layout_width="320dp"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
         android:layout_marginLeft="30dp"
         android:background="#4DC4C4C4"
         android:fontFamily="@font/poppins_medium"
@@ -41,7 +42,8 @@
     <EditText
         android:id="@+id/edt_inputDeskripsiTarget"
         android:layout_width="320dp"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
         android:layout_marginLeft="30dp"
         android:background="#4DC4C4C4"
         android:fontFamily="@font/poppins_medium"

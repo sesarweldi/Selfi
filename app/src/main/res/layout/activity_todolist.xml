@@ -6,55 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.TodolistActivity">
 
-    <LinearLayout
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_todo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-    <include
-        android:id="@+id/todolist_toolbar"
-        layout="@layout/toolbar_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
-
-    <ImageView
-        android:layout_width="360dp"
-        android:layout_height="173dp"
-        android:src="@drawable/banner_todolist"
-        android:layout_marginTop="9dp"
-        android:layout_gravity="center_horizontal"/>
-
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
-                android:fontFamily="@font/montserrat"
-                android:maxLines="2"
-                android:text="Belum ada To Do List"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-        </RelativeLayout>
-    </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_todo"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#6BA8FF"
-        android:src="@drawable/ic_add"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="50dp"
-        app:tint="#fff"
-        app:fabCustomSize="65dp"
-        app:maxImageSize="45dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <include
+                    android:id="@+id/todolist_toolbar"
+                    layout="@layout/toolbar_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true" />
+
+                <ImageView
+                    android:layout_width="360dp"
+                    android:layout_height="173dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="9dp"
+                    android:src="@drawable/banner_todolist" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/info_todo_kosong"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="150dp"
+                        android:fontFamily="@font/montserrat"
+                        android:maxLines="2"
+                        android:text="Belum ada To Do List"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_todo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:listitem="@layout/item_todo"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_todo"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#6BA8FF"
+            android:src="@drawable/ic_add"
+            app:fabCustomSize="65dp"
+            app:maxImageSize="45dp"
+            app:tint="#fff" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

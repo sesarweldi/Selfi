@@ -68,8 +68,9 @@ class LoginActivity : AppCompatActivity() {
 //                        ).show()
 
                         if (response.isSuccessful) {
-                            if (response.body()!!.success) {
+                            if (response.body()!!.success!!) {
                                 val pref = SharedPrefHelper.getInstance(applicationContext)
+
                                 pref.saveUser(response.body()!!.user!!)
 
                                 Log.d("selfi", "id : ${response.body()!!.user!!.nis}")

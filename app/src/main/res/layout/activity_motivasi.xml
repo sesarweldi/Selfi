@@ -1,59 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe_motivasi"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.MotivasiActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <include
-        android:id="@+id/motivasi_toolbar"
-        layout="@layout/toolbar_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        <include
+            android:id="@+id/motivasi_toolbar"
+            layout="@layout/toolbar_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
 
-    <ImageView
-        android:layout_width="360dp"
-        android:layout_height="173dp"
-        android:src="@drawable/banner_motivasi"
-        android:layout_marginTop="9dp"
-        android:layout_gravity="center_horizontal"/>
+        <ImageView
+            android:layout_width="360dp"
+            android:layout_height="173dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/banner_motivasi" />
 
-    <SearchView
-        android:id="@+id/search_motivasi"
-        android:layout_width="294dp"
-        android:layout_height="35dp"
-        android:queryHint="Search..."
-        android:iconifiedByDefault="false"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/roundedshapesearch"
-        android:layout_gravity="center_horizontal"
-        android:theme="@style/SearchViewStyle"
-        />
+        <SearchView
+            android:id="@+id/search_motivasi"
+            android:layout_width="294dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/roundedshapesearch"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search..."
+            android:theme="@style/SearchViewStyle" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_motivasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_motivasi"
-            />
+            tools:listitem="@layout/item_motivasi" />
     </LinearLayout>
 
 
-    </androidx.core.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>
 
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

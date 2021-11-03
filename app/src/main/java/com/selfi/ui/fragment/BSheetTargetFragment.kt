@@ -13,6 +13,7 @@ import com.selfi.models.response.ResponseDB
 import com.selfi.services.SharedPrefHelper
 import com.selfi.services.api.ServiceBuilder
 import com.selfi.services.api.TargetService
+import com.selfi.ui.activity.TargetActivity
 import kotlinx.android.synthetic.main.activity_target.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet_target.*
 import retrofit2.Call
@@ -76,7 +77,6 @@ class BSheetTargetFragment (): BottomSheetDialogFragment(){
                         if (response.body()!!.success) {
                             this@BSheetTargetFragment.dismiss()
                         }
-
                     }
 
                 })

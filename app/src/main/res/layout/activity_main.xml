@@ -35,8 +35,6 @@
         app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="80dp">
 
-
-
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/chip_app_bar"
         android:layout_width="match_parent"

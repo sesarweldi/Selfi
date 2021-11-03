@@ -96,16 +96,18 @@
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="103dp"
-            android:layout_height="45dp"
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/roundedshape"
             android:layout_below="@+id/edt_passwordLogin"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:layout_centerInParent="true"
             android:text="Log in"
             android:textColor="#fff"
             android:fontFamily="@font/poppins_medium"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textAlignment="center"/>
 
      <!--   <TextView
             android:id="@+id/btn_signup"

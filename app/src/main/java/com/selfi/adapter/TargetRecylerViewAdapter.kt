@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.selfi.R
-import com.selfi.adapter.diffutil.DiffUtilTarget
 import com.selfi.models.Target
 import com.selfi.models.response.ResponseDB
 import com.selfi.services.SharedPrefHelper
@@ -91,9 +90,4 @@ class TargetRecylerViewAdapter(private var mValues: List<Target>, private val mC
         val txt_DeskripsiTarget: TextView = mView.findViewById(R.id.txt_DeskripsiTarget)
         val card_target: CardView = mView.findViewById(R.id.cardItemTarget)
     }
-
-//    fun updatedData(mValues2: List<Target>){
-//        val diffResults = DiffUtil.calculateDiff(DiffUtilTarget(mValues,mValues2))
-//        diffResults.dispatchUpdatesTo(this)
-//    }
 }

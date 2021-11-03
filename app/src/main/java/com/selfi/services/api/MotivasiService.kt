@@ -16,11 +16,8 @@ interface MotivasiService {
     ) : Call<DataResponseModel<List<Motivasi>>>
 
 
-    @GET("selfi/motivasi/search}")
+    @GET("selfi/motivasi/search")
     fun searchMotivasi(
-        @Query("keyword") key: String?
+        @Query("keyword") keyword: String?
     ) : Call<DataResponseModel<List<Motivasi>>>
-
-
-
 }

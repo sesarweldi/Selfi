@@ -1,5 +1,8 @@
 package com.selfi.ui.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,16 +10,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.selfi.R
-import com.selfi.models.User
+import com.selfi.adapter.JadwalByHariRecyclerAdapter
+import com.selfi.adapter.JadwalHariRecyclerAdapter
+import com.selfi.models.*
+import com.selfi.models.Target
+import com.selfi.models.response.DataResponseModel
+import com.selfi.models.response.ResponseLogin
 import com.selfi.services.SharedPrefHelper
+import com.selfi.services.api.JadwalService
 import com.selfi.services.api.ServiceBuilder
+import com.selfi.services.api.TargetService
 import com.selfi.services.api.UserService
+import com.selfi.ui.activity.LoginActivity
+import kotlinx.android.synthetic.main.activity_jadwal.*
 import kotlinx.android.synthetic.main.fragment_profile_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class profile_fragment : Fragment() {
@@ -35,25 +49,31 @@ class profile_fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUser()
+        exitButton()
+        setCompletedTodo()
+        setUncompletedTodo()
+        setTargetProfile()
+        recyclerJadwalHariIni()
+
     }
 
-    fun initUser(){
+    fun initUser() {
         val pref = SharedPrefHelper(activity!!)
         ServiceBuilder.buildService(UserService::class.java)
             .getUserById(pref.getAccount().nis/*,1913949*/).enqueue(
-                object : Callback<User> {
+                object : Callback<ResponseLogin> {
                     override fun onResponse(
-                        call: Call<User>,
-                        response: Response<User>
+                        call: Call<ResponseLogin>,
+                        response: Response<ResponseLogin>
                     ) {
-//                        pref.saveUser(
-//                            response.body()!!
-//                        )
-                        response.body()
+                        pref.saveUser(
+                            response.body()!!.user!!
+                        )
+                        //  response.body()
                         setText()
                     }
 
-                    override fun onFailure(call: Call<User>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                         Toast.makeText(
                             activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
                         ).show()
@@ -62,10 +82,160 @@ class profile_fragment : Fragment() {
                 })
     }
 
-    fun setText(){
+    fun setText() {
         val user = SharedPrefHelper.getInstance(activity!!.applicationContext).getAccount()
         text_profile_name.text = user.nama
     }
 
 
+    fun exitButton() {
+        img_exit.setOnClickListener {
+            var alert = AlertDialog.Builder(view!!.rootView.context)
+            alert.setTitle("Logout")
+            alert.setMessage("Apakah anda ingin Logout?")
+            alert.setPositiveButton("Ya", { dialog: DialogInterface?, which: Int ->
+
+                val pref = SharedPrefHelper(activity!!)
+                pref.clearUser()
+                startActivity(
+                    Intent(activity!!, LoginActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                )
+
+            })
+            alert.setNegativeButton("Tidak", { dialog: DialogInterface?, which: Int -> })
+            alert.show()
+
+        }
+    }
+
+
+    fun setUncompletedTodo() {
+        val pref = SharedPrefHelper(activity!!)
+        ServiceBuilder.buildService(UserService::class.java)
+            .getTodoUncompleted(pref.getAccount().nis)
+            .enqueue(object : Callback<DataResponseModel<List<TodoUncompleted>>> {
+                override fun onFailure(
+                    call: Call<DataResponseModel<List<TodoUncompleted>>>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(
+                        activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e("onFailure", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<DataResponseModel<List<TodoUncompleted>>>,
+                    response: Response<DataResponseModel<List<TodoUncompleted>>>
+                ) {
+                    textCard_tugas_tertunda.text =
+                        response.body()!!.data!!.get(0).totalKegiatanTertunda.toString()
+                }
+
+            })
+    }
+
+
+    fun setCompletedTodo() {
+        val pref = SharedPrefHelper(activity!!)
+        ServiceBuilder.buildService(UserService::class.java).getTodoCompleted(pref.getAccount().nis)
+            .enqueue(object : Callback<DataResponseModel<List<TodoCompleted>>> {
+                override fun onFailure(
+                    call: Call<DataResponseModel<List<TodoCompleted>>>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(
+                        activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e("onFailure", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<DataResponseModel<List<TodoCompleted>>>,
+                    response: Response<DataResponseModel<List<TodoCompleted>>>
+                ) {
+                    textCard_tugas_selesai.text =
+                        response.body()!!.data!!.get(0).totalKegiatanSelesai.toString()
+                }
+
+            })
+    }
+
+    fun setTargetProfile() {
+        val pref = SharedPrefHelper(activity!!).getAccount().nis
+        ServiceBuilder.buildService(TargetService::class.java).getTarget(pref)
+            .enqueue(object : Callback<DataResponseModel<List<Target>>> {
+                override fun onFailure(call: Call<DataResponseModel<List<Target>>>, t: Throwable) {
+                    Toast.makeText(
+                        activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e("onFailure", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<DataResponseModel<List<Target>>>,
+                    response: Response<DataResponseModel<List<Target>>>
+                ) {
+                    tv_judul_target_profile.text = response.body()!!.data!!.last().judulTarget
+                    tv_deskripsi_target_profile.text =
+                        response.body()!!.data!!.last().deskripsiTarget
+                }
+            })
+    }
+
+    fun recyclerJadwalHariIni() {
+        val pref = SharedPrefHelper(activity!!).getAccount().Idkelas
+        ServiceBuilder.buildService(JadwalService::class.java)
+            .getJadwalByHari(pref, getCurrentDay())
+            .enqueue(object : Callback<DataResponseModel<List<JadwalMapelProfile>>> {
+                override fun onFailure(
+                    call: Call<DataResponseModel<List<JadwalMapelProfile>>>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(
+                        activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e("onFailure", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<DataResponseModel<List<JadwalMapelProfile>>>,
+                    response: Response<DataResponseModel<List<JadwalMapelProfile>>>
+                ) {
+                    rv_jadwal_profile.setHasFixedSize(true)
+                    rv_jadwal_profile.layoutManager = LinearLayoutManager(activity!!)
+                    val adapter =
+                        JadwalByHariRecyclerAdapter(response.body()!!.data!!, activity!!)
+                    rv_jadwal_profile.adapter = adapter
+                }
+            })
+    }
+
+    fun getCurrentDay(): String {
+        var weekDay: String = ""
+
+        val c: Calendar = Calendar.getInstance()
+        val dayOfWeek = c.get(Calendar.DAY_OF_WEEK)
+
+        if (Calendar.MONDAY == dayOfWeek) {
+            weekDay = "senin"
+        }
+        if (Calendar.TUESDAY == dayOfWeek) {
+            weekDay = "selasa"
+        }
+        if (Calendar.WEDNESDAY == dayOfWeek) {
+            weekDay = "rabu"
+        }
+
+        if (Calendar.THURSDAY == dayOfWeek) {
+            weekDay = "kamis"
+        }
+
+        if (Calendar.FRIDAY == dayOfWeek) {
+            weekDay = "jumat"
+        }
+
+        return weekDay
+    }
 }

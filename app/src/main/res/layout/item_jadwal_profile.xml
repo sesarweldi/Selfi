@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/buletan"
         android:layout_width="4dp"
         android:layout_height="4dp"
-        android:src="#fff"
+        android:src="#000"
         android:layout_marginTop="7dp"/>
 
     <TextView
-        android:id="@+id/text_mapelJadwal"
+        android:id="@+id/text_mapelJadwalProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mapel asjdas bas kdjask jak sjdsa "
         android:fontFamily="@font/montserrat"
-        android:textSize="16sp"
-        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textColor="#000"
         android:layout_toRightOf="@id/buletan"
         android:layout_marginLeft="9dp"
-         />
+        />
 
 </RelativeLayout>

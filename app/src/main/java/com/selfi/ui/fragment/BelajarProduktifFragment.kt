@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -37,11 +38,11 @@ class BelajarProduktifFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        recyclerProduktif()
+        recyclerProduktif("")
     }
 
-    fun recyclerProduktif(){
-        val service = ServiceBuilder.buildService(BelajarService:: class.java).getAllBukuProduktif()
+    fun recyclerProduktif(keyword: String?){
+        val service = ServiceBuilder.buildService(BelajarService:: class.java).searchBukuProduktif(keyword)
         service.enqueue(object: Callback<DataResponseModel<List<Belajar>>>{
             override fun onFailure(call: Call<DataResponseModel<List<Belajar>>>, t: Throwable) {
                 Toast.makeText(
@@ -62,6 +63,20 @@ class BelajarProduktifFragment : Fragment() {
                     rv_belajarProduktif.layoutManager = GridLayoutManager(activity!!.applicationContext, 2)
                     rv_belajarProduktif.adapter =
                         BelajarNoraRecyclerAdapter(response.body()!!.data!!, activity!!.applicationContext)
+                    rv_belajarProduktif.adapter!!.notifyDataSetChanged()
+
+                    search_produktif.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            recyclerProduktif(query)
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            recyclerProduktif(newText)
+                            return false
+                        }
+
+                    })
                 }
                 else{
                     Toast.makeText(activity!!.applicationContext, "Error", Toast.LENGTH_SHORT).show()

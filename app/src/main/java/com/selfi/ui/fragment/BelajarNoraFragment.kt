@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,12 +38,12 @@ class BelajarNoraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerNora()
+        recyclerNora("")
     }
 
 
-    fun recyclerNora(){
-        val service = ServiceBuilder.buildService(BelajarService:: class.java).getAllBukuNormatif()
+    fun recyclerNora(keyword: String?){
+        val service = ServiceBuilder.buildService(BelajarService:: class.java).searchBukuNormatif(keyword)
         service.enqueue(object: Callback<DataResponseModel<List<Belajar>>>{
             override fun onFailure(call: Call<DataResponseModel<List<Belajar>>>, t: Throwable) {
                 Toast.makeText(
@@ -63,6 +64,20 @@ class BelajarNoraFragment : Fragment() {
                     rv_belajarNora.layoutManager = GridLayoutManager(activity!!.applicationContext, 2)
                     rv_belajarNora.adapter =
                         BelajarNoraRecyclerAdapter(response.body()!!.data!!, activity!!.applicationContext)
+                    rv_belajarNora.adapter!!.notifyDataSetChanged()
+
+                    search_nora.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            recyclerNora(query)
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            recyclerNora(newText)
+                            return false
+                        }
+
+                    })
                 }
                 else{
                     Toast.makeText(activity!!.applicationContext, "Error", Toast.LENGTH_SHORT).show()
