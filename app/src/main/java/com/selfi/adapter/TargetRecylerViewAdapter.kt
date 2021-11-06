@@ -17,11 +17,12 @@ import com.selfi.models.response.ResponseDB
 import com.selfi.services.SharedPrefHelper
 import com.selfi.services.api.ServiceBuilder
 import com.selfi.services.api.TargetService
+import com.selfi.ui.activity.TargetActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TargetRecylerViewAdapter(private var mValues: List<Target>, private val mContext: Context) :
+class TargetRecylerViewAdapter(private var mValues: List<Target>, private val mContext: Context, private var update:()-> Unit) :
     RecyclerView.Adapter<TargetRecylerViewAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -67,11 +68,7 @@ class TargetRecylerViewAdapter(private var mValues: List<Target>, private val mC
                         response: Response<ResponseDB>
                     ) {
                         if (response.isSuccessful) {
-                            Toast.makeText(
-                                mContext.applicationContext,
-                                response.body()!!.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            update()
                         } else {
                             Toast.makeText(mContext.applicationContext, "Error", Toast.LENGTH_SHORT)
                                 .show()

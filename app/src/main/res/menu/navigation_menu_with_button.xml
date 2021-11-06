@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-       android:id="@+id/notif"
-        android:title="Notif"
+       android:id="@+id/fragmentHome"
+        android:title="Home"
         app:cnb_iconColor="#fff"
         app:cnb_backgroundColor="@color/colorPrimaryDark"
-        android:icon="@drawable/ic_notifications"
+        android:icon="@drawable/ic_home"
         />
 
+<!--
     <item
         android:id="@+id/blank"
         android:title=""
@@ -23,13 +24,14 @@
         android:enabled="false"
         app:showAsAction="ifRoom"
         />
+-->
 
 
 
 
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/fragmentProfile"
         android:title="Profile"
         app:cnb_iconColor="#fff"
         app:cnb_backgroundColor="@color/colorPrimaryDark"

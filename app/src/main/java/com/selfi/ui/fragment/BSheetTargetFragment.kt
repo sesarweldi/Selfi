@@ -76,9 +76,9 @@ class BSheetTargetFragment (): BottomSheetDialogFragment(){
 
                         if (response.body()!!.success) {
                             this@BSheetTargetFragment.dismiss()
+                            (activity as TargetActivity).recylerTarget()
                         }
                     }
-
                 })
             }
         }

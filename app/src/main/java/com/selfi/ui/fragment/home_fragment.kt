@@ -74,7 +74,6 @@ class home_fragment : Fragment() {
     }
 
 
-    //    private var nis:Int = 0
     private var pref_id: Int = 0
 
     fun initUser() {

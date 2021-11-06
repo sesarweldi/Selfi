@@ -6,14 +6,8 @@ import com.selfi.models.response.ResponseDB
 import retrofit2.Call
 import retrofit2.http.*
 import java.time.LocalDateTime
-import java.time.ZonedDateTime
 
 interface TodoService {
-
-    @GET("selfi/todolist/{nis}")
-    fun getTodoByNis(
-        @Path("nis") nis: Int
-    ) : Call<DataResponseModel<List<Todo>>>
 
     @FormUrlEncoded
     @POST("selfi/todolist/tambah")
@@ -21,8 +15,31 @@ interface TodoService {
         @Field("id_kegiatan") id_todo: Int,
         @Field("nis") nis: Int,
         @Field("nama_kegiatan") nama_kegiatan: String,
-        @Field("tanggal") tanggal_todo: String
-      //  @Field("jam") jam_todo: String
+        @Field("tanggal") tanggal_todo: LocalDateTime
     ) : Call<ResponseDB>
+
+    @GET("selfi/todolist/{nis}/progress")
+    fun getTodoUncompleted(
+        @Path("nis") nis: Int
+    ) : Call<DataResponseModel<List<Todo>>>
+
+    @GET("selfi/todolist/{nis}/completed")
+    fun getTodoCompleted(
+        @Path("nis") nis: Int
+    ) : Call<DataResponseModel<List<Todo>>>
+
+    @FormUrlEncoded
+    @PUT("selfi/todolist/{nis}/{id}")
+    fun updateTodo(
+        @Path("nis") nis: Int,
+        @Path("id") id: Int,
+        @Field("status") status: String
+    ): Call<ResponseDB>
+
+    @DELETE("selfi/todolist/{nis}/{id}")
+    fun deleteTodoCompleted(
+        @Path("nis") nis: Int,
+        @Path("id") id: Int
+    ): Call<ResponseDB>
 }
 

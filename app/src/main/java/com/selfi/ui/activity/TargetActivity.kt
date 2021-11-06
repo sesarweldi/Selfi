@@ -44,7 +44,7 @@ class TargetActivity : AppCompatActivity() {
         }
     }
 
-    public fun recylerTarget() {
+     fun recylerTarget() {
         swipe_target.isRefreshing = true
        val pref =  SharedPrefHelper.getInstance(applicationContext).getAccount()
         val service =
@@ -73,16 +73,19 @@ class TargetActivity : AppCompatActivity() {
                         rv_target.layoutManager =
                             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                         val adapter =
-                            TargetRecylerViewAdapter(response.body()!!.data!!, this@TargetActivity)
+                            TargetRecylerViewAdapter(response.body()!!.data!!, this@TargetActivity){
+                                Toast.makeText(
+                                    this@TargetActivity, "Target berhasil dihapus",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                recylerTarget()
+                            }
                         rv_target.adapter = adapter
-                        rv_target.adapter!!.notifyDataSetChanged()
-
                     }
                     swipe_target.isRefreshing = false
 
                 } else {
                     Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
-                    swipe_target.isRefreshing = false
 
                 }
             }

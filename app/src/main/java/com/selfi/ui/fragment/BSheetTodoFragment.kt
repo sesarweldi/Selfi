@@ -8,13 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.TimePicker
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.selfi.R
+import com.selfi.alarm.AlarmReceiver
 import com.selfi.models.response.ResponseDB
 import com.selfi.services.SharedPrefHelper
 import com.selfi.services.api.ServiceBuilder
 import com.selfi.services.api.TodoService
+import com.selfi.ui.activity.TodolistActivity
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet_todo.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet_todo.view.*
 import org.joda.time.DateTime
@@ -28,6 +33,7 @@ import java.text.SimpleDateFormat
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.min
 
 class BSheetTodoFragment() : BottomSheetDialogFragment() {
 
@@ -46,25 +52,25 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var btnSimpan = view.btn_simpanTodo
+
+
+
+
+
 
         pref_id = SharedPrefHelper(activity!!.applicationContext).getAccount().nis
 
+        /*
+               dateDialog()
+               timeDialog()
+       */
 
-        //btn simpan
-//        btnSimpan.setOnClickListener {
-//            Toast.makeText(requireContext(), "Dipencet!", Toast.LENGTH_LONG).show()
-//        }
-
-        //date picker
         dateDialog()
-
-        //time picker
         timeDialog()
 
         btnSimpanClick()
     }
-
+/*
     fun dateDialog() {
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
@@ -112,8 +118,11 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
         }
     }
 
+    */
+
 
     fun btnSimpanClick() {
+        val alarmReceiver = AlarmReceiver()
         btn_simpanTodo.setOnClickListener {
             if (edt_inputTodo.text.toString().trim().isEmpty()) {
                 edt_inputTodo.error = "Judul tidak boleh kosong"
@@ -128,19 +137,19 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
                 edt_inputJamTodo.requestFocus()
                 return@setOnClickListener
             } else {
-//                val datePart: LocalDate = LocalDate.parse(edt_inputTanggalTodo.text.toString())
-//                val timePart: LocalTime = LocalTime.parse(edt_inputJamTodo.text.toString())
-//                val dt: LocalDateTime = LocalDateTime.of(datePart, timePart)
-//                val zoneId: ZoneId = ZoneId.of("Asia/Jakarta")
-//                val zdt: ZonedDateTime =  ZonedDateTime.of(dt,zoneId)
-//
-//                val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-//                val formatterTime: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+                val datePart: java.time.LocalDate =
+                    java.time.LocalDate.parse(edt_inputTanggalTodo.text.toString())
+                val timePart: java.time.LocalTime =
+                    java.time.LocalTime.parse(edt_inputJamTodo.text.toString())
+                val dt: java.time.LocalDateTime = java.time.LocalDateTime.of(datePart, timePart)
 
-                val tanggal: LocalDate = LocalDate.parse(edt_inputTanggalTodo.text.toString())
-                val jam: LocalTime = LocalTime.parse(edt_inputJamTodo.text.toString())
-
-
+                alarmReceiver.setAlarm(
+                    activity!!,
+                    alarmReceiver.TYPE_ONE_TIME,
+                    edt_inputTanggalTodo.text.toString(),
+                    edt_inputJamTodo.text.toString(),
+                    edt_inputTodo.text.toString()
+                )
 
 
                 val service = ServiceBuilder.buildService(TodoService::class.java)
@@ -148,7 +157,7 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
                     id_todo,
                     pref_id,
                     edt_inputTodo.text.toString(),
-                    onSetIsoDueDate(tanggal, jam)
+                    dt
                 ).enqueue(object : Callback<ResponseDB> {
                     override fun onFailure(call: Call<ResponseDB>, t: Throwable) {
                         Log.e("onFailure", t.message!!)
@@ -169,22 +178,52 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
 
                         if (response.body()!!.success) {
                             this@BSheetTodoFragment.dismiss()
+                            (activity as TodolistActivity).recyclerTodo()
                         }
-
-
                     }
                 })
 
             }
         }
     }
-//
-    fun onSetIsoDueDate(date: LocalDate, time: LocalTime): String {
-        val tmpDueDate = DateTime()
-            .withDate(date)
-            .withTime(time)
 
-    Log.d("test",tmpDueDate.toString())
-        return tmpDueDate.toString()
+    fun dateDialog(){
+        val c: Calendar = Calendar.getInstance()
+        var mYear: Int = c.get(Calendar.YEAR)
+        var mMonth: Int = c.get(Calendar.MONTH)
+        var mDay: Int = c.get(Calendar.DAY_OF_MONTH)
+
+
+        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
+            override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
+                edt_inputTanggalTodo.setText(String.format("%04d-%02d-%02d",year, month +1, dayOfMonth))
+                mYear = year
+                mMonth = month
+                mDay = dayOfMonth
+
+            }
+        }
+
+        edt_inputTanggalTodo.setOnClickListener {
+            DatePickerDialog(activity!!, dateSetListener, mYear,mMonth, mDay).show()
+        }
+    }
+    
+    fun timeDialog(){
+        val c: Calendar = Calendar.getInstance()
+        var mHour: Int = c.get(Calendar.HOUR_OF_DAY)
+        var mMinute: Int = c.get(Calendar.MINUTE)
+        
+        val timeSetListener = object : TimePickerDialog.OnTimeSetListener{
+            override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+                edt_inputJamTodo.setText(String.format("%02d:%02d", hourOfDay, minute))
+                mHour = hourOfDay
+                mMinute = minute
+            }
+        }
+        
+        edt_inputJamTodo.setOnClickListener {
+            TimePickerDialog(activity!!, timeSetListener, mHour, mMinute, true).show()
+        }
     }
 }

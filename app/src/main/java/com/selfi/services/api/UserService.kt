@@ -1,5 +1,6 @@
 package com.selfi.services.api
 
+import com.selfi.models.Target
 import com.selfi.models.TodoCompleted
 import com.selfi.models.TodoUncompleted
 import com.selfi.models.User
@@ -34,4 +35,9 @@ interface UserService {
     fun getTodoCompleted(
         @Path("nis") nis: Int
     ): Call<DataResponseModel<List<TodoCompleted>>>
+
+    @GET("selfi/target/{nis}/profile")
+    fun getTargetProfile(
+        @Path("nis") nis: Int
+    ): Call<DataResponseModel<List<Target>>>
 }

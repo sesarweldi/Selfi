@@ -1,21 +1,37 @@
 package com.selfi.adapter
 
+import android.annotation.TargetApi
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.selfi.R
 import com.selfi.models.Todo
-import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
+import com.selfi.models.response.ResponseDB
+import com.selfi.services.SharedPrefHelper
+import com.selfi.services.api.ServiceBuilder
+import com.selfi.services.api.TodoService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
+//import jdk.nashorn.internal.objects.NativeDate.getTime
 
 
-class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext: Context) :
+
+
+class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext: Context, private var update:()-> Unit) :
     RecyclerView.Adapter<TodoRecyclerAdapter.ListViewHolder>() {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
 
@@ -32,8 +48,31 @@ class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext:
     }
 
     override fun onBindViewHolder(holder: TodoRecyclerAdapter.ListViewHolder, position: Int) {
-        val item = mValues[position]
+        var item = mValues[position]
         holder.txt_judul.text = item.kegiatan
+
+        holder.cb_todo.setOnClickListener {
+
+            if(holder.cb_todo.isChecked){
+                val pref = SharedPrefHelper.getInstance(mContext).getAccount().nis
+                ServiceBuilder.buildService(TodoService::class.java).updateTodo(
+                    pref, item.id,"completed").enqueue(object: Callback<ResponseDB> {
+                    override fun onFailure(call: Call<ResponseDB>, t: Throwable) {
+                        Toast.makeText(mContext, "Error : ${t.message}", Toast.LENGTH_SHORT)
+
+                    }
+
+                    override fun onResponse(call: Call<ResponseDB>, response: Response<ResponseDB>) {
+                        update()
+                    }
+
+                })
+            }
+        }
+
+
+
+
 
         try {
 
@@ -85,5 +124,30 @@ class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext:
         val txt_bulan: TextView = mView.findViewById(R.id.tv_bulan_todo)
         val txt_hari: TextView = mView.findViewById(R.id.tv_hari_todo)
         val txt_judul: TextView = mView.findViewById(R.id.tv_judul_todo)
+        val cb_todo: CheckBox =  mView.findViewById(R.id.cb_todo)
     }
+
+
+/*    @TargetApi(Build.VERSION_CODES.M)
+    fun setScheduleNotification() {
+        // membuat objek intent yang akan menjadi target selanjutnya
+        // bisa untuk berpindah halaman dengan dan tanpa data
+        val intent = Intent(this@MainActivity, AboutActivity::class.java)
+        intent.putExtra("key", "value")
+
+        // membuat objek PendingIntent yang berguna sebagai penampung intent dan aksi yang akan dikerjakan
+        val requestCode = 0
+        val pendingIntent =
+            PendingIntent.getActivity(this@MainActivity, requestCode, intent, 0)
+
+        // membuat objek AlarmManager untuk melakukan pendaftaran alarm yang akan dijadwalkan
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        // kita buat alarm yang dapat berfungsi tepat waktu dan juga walaupun dalam kondisi HP idle
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis() + 5000,
+            pendingIntent
+        )
+    }*/
 }

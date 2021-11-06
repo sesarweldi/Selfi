@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.selfi.R
 import com.selfi.adapter.JadwalByHariRecyclerAdapter
 import com.selfi.adapter.JadwalHariRecyclerAdapter
+import com.selfi.adapter.TargetProfileRecyclerAdapter
 import com.selfi.models.*
 import com.selfi.models.Target
 import com.selfi.models.response.DataResponseModel
@@ -52,8 +53,9 @@ class profile_fragment : Fragment() {
         exitButton()
         setCompletedTodo()
         setUncompletedTodo()
-        setTargetProfile()
+       // setTargetProfile()
         recyclerJadwalHariIni()
+        recyclerTargetProfile()
 
     }
 
@@ -162,27 +164,6 @@ class profile_fragment : Fragment() {
             })
     }
 
-    fun setTargetProfile() {
-        val pref = SharedPrefHelper(activity!!).getAccount().nis
-        ServiceBuilder.buildService(TargetService::class.java).getTarget(pref)
-            .enqueue(object : Callback<DataResponseModel<List<Target>>> {
-                override fun onFailure(call: Call<DataResponseModel<List<Target>>>, t: Throwable) {
-                    Toast.makeText(
-                        activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
-                    ).show()
-                    Log.e("onFailure", t.message.toString())
-                }
-
-                override fun onResponse(
-                    call: Call<DataResponseModel<List<Target>>>,
-                    response: Response<DataResponseModel<List<Target>>>
-                ) {
-                    tv_judul_target_profile.text = response.body()!!.data!!.last().judulTarget
-                    tv_deskripsi_target_profile.text =
-                        response.body()!!.data!!.last().deskripsiTarget
-                }
-            })
-    }
 
     fun recyclerJadwalHariIni() {
         val pref = SharedPrefHelper(activity!!).getAccount().Idkelas
@@ -212,6 +193,29 @@ class profile_fragment : Fragment() {
             })
     }
 
+    fun recyclerTargetProfile(){
+        val pref = SharedPrefHelper.getInstance(activity!!).getAccount().nis
+        ServiceBuilder.buildService(UserService :: class.java).getTargetProfile(pref).enqueue(object : Callback<DataResponseModel<List<Target>>>{
+            override fun onFailure(call: Call<DataResponseModel<List<Target>>>, t: Throwable) {
+                Toast.makeText(
+                    activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT
+                ).show()
+                Log.e("onFailure", t.message.toString())            }
+
+            override fun onResponse(
+                call: Call<DataResponseModel<List<Target>>>,
+                response: Response<DataResponseModel<List<Target>>>
+            ) {
+                rv_target_profile.setHasFixedSize(true)
+                rv_target_profile.layoutManager = LinearLayoutManager(activity!!)
+                val adapter =
+                    TargetProfileRecyclerAdapter(response.body()!!.data!!, activity!!)
+                rv_target_profile.adapter = adapter
+            }
+
+        })
+    }
+
     fun getCurrentDay(): String {
         var weekDay: String = ""
 
@@ -234,6 +238,14 @@ class profile_fragment : Fragment() {
 
         if (Calendar.FRIDAY == dayOfWeek) {
             weekDay = "jumat"
+        }
+
+        if (Calendar.SATURDAY == dayOfWeek) {
+            weekDay = "sabtu"
+        }
+
+        if (Calendar.SUNDAY == dayOfWeek) {
+            weekDay = "minggu"
         }
 
         return weekDay

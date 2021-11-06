@@ -37,6 +37,19 @@
                     android:layout_marginTop="9dp"
                     android:src="@drawable/banner_todolist" />
 
+                <TextView
+                    android:id="@+id/tv_tugas_selesai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tugas Selesai"
+                    android:layout_marginTop="12dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="25dp"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

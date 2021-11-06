@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         constraint = findViewById(R.id.coordinator)
 
         chipNavigationBar=findViewById(R.id.chip_app_bar)
-      //  chipNavigationBar.setItemSelected(R.id.notif,true)
+        chipNavigationBar.setItemSelected(R.id.fragmentHome,true)
         supportFragmentManager.beginTransaction().replace(R.id.root_layout,home_fragment()).commit()
 
         bottom_menu()
@@ -32,21 +32,21 @@ class MainActivity : AppCompatActivity() {
     private fun bottom_menu(){
         chipNavigationBar.setOnItemSelectedListener({
             when(it){
-                R.id.notif ->{
-                    supportFragmentManager.beginTransaction().replace(R.id.root_layout, notifFragment()).commit()
+                R.id.fragmentHome ->{
+                    supportFragmentManager.beginTransaction().replace(R.id.root_layout, home_fragment()).commit()
                 }
 
-                R.id.profile -> {
+                R.id.fragmentProfile -> {
                     supportFragmentManager.beginTransaction().replace(R.id.root_layout,profile_fragment()).commit()
                 }
             }
         })
     }
 
-     fun floating_button(view: View){
+  /*   fun floating_button(view: View){
         supportFragmentManager.beginTransaction().replace(R.id.root_layout,home_fragment()).commit()
          chipNavigationBar.setItemSelected(R.id.notif,false)
          chipNavigationBar.setItemSelected(R.id.profile,false)
-    }
+    }*/
 }
 

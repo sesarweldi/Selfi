@@ -1,5 +1,6 @@
 package com.selfi.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,6 +38,10 @@ class TodolistActivity : AppCompatActivity() {
             bottomSheetTodo.show(supportFragmentManager,"TAG")
         }
 
+        tv_tugas_selesai.setOnClickListener {
+            startActivity(Intent(this@TodolistActivity, TodolistCompletedActivity:: class.java))
+        }
+
         recyclerTodo()
 
         swipe_todo.setOnRefreshListener {
@@ -46,7 +51,7 @@ class TodolistActivity : AppCompatActivity() {
 
      fun recyclerTodo(){
          val pref =  SharedPrefHelper.getInstance(applicationContext).getAccount().nis
-         val service = ServiceBuilder.buildService(TodoService:: class.java).getTodoByNis(pref)
+         val service = ServiceBuilder.buildService(TodoService:: class.java).getTodoUncompleted(pref)
          service.enqueue(object: Callback<DataResponseModel<List<Todo>>>{
              override fun onFailure(call: Call<DataResponseModel<List<Todo>>>, t: Throwable) {
                  Toast.makeText(applicationContext, "Error : ${t.message}", Toast.LENGTH_SHORT)
@@ -70,7 +75,12 @@ class TodolistActivity : AppCompatActivity() {
                          rv_todo.setHasFixedSize(true)
                          rv_todo.layoutManager = LinearLayoutManager(this@TodolistActivity)
                          val adapter =
-                             TodoRecyclerAdapter(response.body()!!.data!!, this@TodolistActivity)
+                             TodoRecyclerAdapter(response.body()!!.data!!, this@TodolistActivity ){ Toast.makeText(
+                                 this@TodolistActivity, "Todo List selesai",
+                                 Toast.LENGTH_SHORT
+                             ).show()
+                             recyclerTodo()
+                             }
                          rv_todo.adapter = adapter
                      }
                      swipe_todo.isRefreshing = false

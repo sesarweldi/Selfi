@@ -39,7 +39,6 @@ class BelajarNoraFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerNora("")
-        //test
     }
 
 

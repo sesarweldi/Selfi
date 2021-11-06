@@ -20,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <include
                     android:id="@+id/target_toolbar"
                     layout="@layout/toolbar_activity"

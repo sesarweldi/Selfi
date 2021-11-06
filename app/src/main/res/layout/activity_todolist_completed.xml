@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.TodolistCompletedActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/todo2_toolbar"
+            layout="@layout/toolbar_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tugas Selesai"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:layout_marginLeft="25dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_todo_completed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="24dp"
+            android:paddingLeft="24dp"
+            tools:listitem="@layout/item_todo_completed"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
