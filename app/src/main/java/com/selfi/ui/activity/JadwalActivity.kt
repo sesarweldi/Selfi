@@ -35,7 +35,7 @@ class JadwalActivity : AppCompatActivity() {
 
     fun setRecyclerJadwal(){
         val pref = SharedPrefHelper.getInstance(applicationContext).getAccount().Idkelas
-        val service = ServiceBuilder.buildService(JadwalService:: class.java).getJadwalByKelas(pref)
+        val service = ServiceBuilder.buildService(JadwalService:: class.java, this@JadwalActivity).getJadwalByKelas(pref)
 
 
 

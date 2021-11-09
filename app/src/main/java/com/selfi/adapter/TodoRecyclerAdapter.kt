@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.selfi.R
+import com.selfi.alarm.AlarmReceiver
 import com.selfi.models.Todo
 import com.selfi.models.response.ResponseDB
 import com.selfi.services.SharedPrefHelper
@@ -54,8 +55,13 @@ class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext:
         holder.cb_todo.setOnClickListener {
 
             if(holder.cb_todo.isChecked){
+
+              /*  val alarmReceiver = AlarmReceiver()
+                alarmReceiver.cancelAlarm(mContext, alarmReceiver.TYPE_ONE_TIME)*/
+
+
                 val pref = SharedPrefHelper.getInstance(mContext).getAccount().nis
-                ServiceBuilder.buildService(TodoService::class.java).updateTodo(
+                ServiceBuilder.buildService(TodoService::class.java, mContext).updateTodo(
                     pref, item.id,"completed").enqueue(object: Callback<ResponseDB> {
                     override fun onFailure(call: Call<ResponseDB>, t: Throwable) {
                         Toast.makeText(mContext, "Error : ${t.message}", Toast.LENGTH_SHORT)
@@ -69,8 +75,6 @@ class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext:
                 })
             }
         }
-
-
 
 
 
@@ -127,27 +131,4 @@ class TodoRecyclerAdapter(private var mValues: List<Todo>, private var mContext:
         val cb_todo: CheckBox =  mView.findViewById(R.id.cb_todo)
     }
 
-
-/*    @TargetApi(Build.VERSION_CODES.M)
-    fun setScheduleNotification() {
-        // membuat objek intent yang akan menjadi target selanjutnya
-        // bisa untuk berpindah halaman dengan dan tanpa data
-        val intent = Intent(this@MainActivity, AboutActivity::class.java)
-        intent.putExtra("key", "value")
-
-        // membuat objek PendingIntent yang berguna sebagai penampung intent dan aksi yang akan dikerjakan
-        val requestCode = 0
-        val pendingIntent =
-            PendingIntent.getActivity(this@MainActivity, requestCode, intent, 0)
-
-        // membuat objek AlarmManager untuk melakukan pendaftaran alarm yang akan dijadwalkan
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        // kita buat alarm yang dapat berfungsi tepat waktu dan juga walaupun dalam kondisi HP idle
-        alarmManager.setExactAndAllowWhileIdle(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis() + 5000,
-            pendingIntent
-        )
-    }*/
 }

@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
 
-            ServiceBuilder.buildService(UserService::class.java).login(nis, password)
+            ServiceBuilder.buildService(UserService::class.java, this@LoginActivity).login(nis, password)
                 .enqueue(object : Callback<ResponseLogin> {
                     override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
 
@@ -61,41 +61,39 @@ class LoginActivity : AppCompatActivity() {
                         call: Call<ResponseLogin>,
                         response: Response<ResponseLogin>
                     ) {
-//                        Toast.makeText(
-//                            this@LoginActivity,
-//                            response.body()!!.message,
-//                            Toast.LENGTH_SHORT
-//                        ).show()
 
-                        if (response.isSuccessful) {
-                            if (response.body()!!.success!!) {
-                                val pref = SharedPrefHelper.getInstance(applicationContext)
-
-                                pref.saveUser(response.body()!!.user!!)
-
-                                Log.d("selfi", "id : ${response.body()!!.user!!.nis}")
-
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    response.body()!!.message,
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                        if(response.isSuccessful){
+                            val pref= SharedPrefHelper.getInstance(applicationContext)
+                            pref.saveUser(response.body()!!.user!!)
+                            pref.saveAuthToken(response.body()!!.token!!)
+                            Log.d("tes token", "token : ${response.body()!!.token}" )
 
 
-                                startActivity(
-                                    Intent(this@LoginActivity, MainActivity::class.java)
-                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                )
-                            } else {
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    response.body()!!.message,
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-                        } else {
-                            Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@LoginActivity,
+                                response.body()!!.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+
+                            startActivity(
+                                Intent(this@LoginActivity, MainActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            )
+                        } else if(response.code() == 400){
+
+                            Toast.makeText(
+                                this@LoginActivity,"Password Anda Salah!" ,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        else{
+                            Toast.makeText(
+                                this@LoginActivity,"Nis Salah atau Anda Belum Terdaftar",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 })

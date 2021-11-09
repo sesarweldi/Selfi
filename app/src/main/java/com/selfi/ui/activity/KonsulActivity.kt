@@ -34,7 +34,7 @@ class KonsulActivity : AppCompatActivity() {
 
     private fun recylerKonsul() {
 
-        val service = ServiceBuilder.buildService(KonsulService::class.java)
+        val service = ServiceBuilder.buildService(KonsulService::class.java, this@KonsulActivity)
         service.getKonseling().enqueue(object : Callback<DataResponseModel<List<konsul>>> {
             override fun onFailure(
                 call: Call<DataResponseModel<List<konsul>>>,

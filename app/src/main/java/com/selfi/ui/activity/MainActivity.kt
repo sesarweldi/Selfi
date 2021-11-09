@@ -7,7 +7,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.selfi.R
 import com.selfi.ui.fragment.home_fragment
-import com.selfi.ui.fragment.notifFragment
 import com.selfi.ui.fragment.profile_fragment
 
 class MainActivity : AppCompatActivity() {

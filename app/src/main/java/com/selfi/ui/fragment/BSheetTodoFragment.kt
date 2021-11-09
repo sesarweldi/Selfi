@@ -70,55 +70,6 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
 
         btnSimpanClick()
     }
-/*
-    fun dateDialog() {
-        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateView()
-            }
-        }
-        edt_inputTanggalTodo.setOnClickListener {
-            DatePickerDialog(
-                activity!!, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
-        }
-
-    }
-
-    private fun updateDateView() {
-        val formatTannggal = "yyyy-MM-dd"
-        val sdf = SimpleDateFormat(formatTannggal, Locale.US)
-        edt_inputTanggalTodo.setText(sdf.format(cal.time))
-    }
-
-
-    fun timeDialog() {
-        edt_inputJamTodo.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                cal.set(Calendar.MINUTE, minute)
-
-                edt_inputJamTodo.setText(SimpleDateFormat("HH:mm").format(cal.time))
-            }
-
-            TimePickerDialog(
-                activity!!,
-                timeSetListener,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            ).show()
-        }
-    }
-
-    */
 
 
     fun btnSimpanClick() {
@@ -152,7 +103,7 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
                 )
 
 
-                val service = ServiceBuilder.buildService(TodoService::class.java)
+                val service = ServiceBuilder.buildService(TodoService::class.java, activity!!)
                 service.addTodo(
                     id_todo,
                     pref_id,

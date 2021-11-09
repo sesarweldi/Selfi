@@ -34,7 +34,7 @@ class MotivasiActivity : AppCompatActivity() {
 
 
     fun searchMotivasi(keyword: String?) {
-        val service = ServiceBuilder.buildService(MotivasiService::class.java).searchMotivasi(keyword)
+        val service = ServiceBuilder.buildService(MotivasiService::class.java, this@MotivasiActivity).searchMotivasi(keyword)
         service.enqueue(object : Callback<DataResponseModel<List<Motivasi>>> {
             override fun onFailure(call: Call<DataResponseModel<List<Motivasi>>>, t: Throwable) {
                 Toast.makeText(

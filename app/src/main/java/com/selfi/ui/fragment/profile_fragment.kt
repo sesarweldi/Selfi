@@ -25,7 +25,9 @@ import com.selfi.services.api.JadwalService
 import com.selfi.services.api.ServiceBuilder
 import com.selfi.services.api.TargetService
 import com.selfi.services.api.UserService
+import com.selfi.ui.activity.JadwalActivity
 import com.selfi.ui.activity.LoginActivity
+import com.selfi.ui.activity.TargetActivity
 import kotlinx.android.synthetic.main.activity_jadwal.*
 import kotlinx.android.synthetic.main.fragment_profile_fragment.*
 import retrofit2.Call
@@ -57,11 +59,21 @@ class profile_fragment : Fragment() {
         recyclerJadwalHariIni()
         recyclerTargetProfile()
 
+        card_target_profile.setOnClickListener {
+            startActivity(Intent(activity!!, TargetActivity :: class.java))
+        }
+
+        card_jadwal_profile.setOnClickListener {
+            startActivity(Intent(activity!!, JadwalActivity:: class.java))
+        }
+
+
+
     }
 
     fun initUser() {
         val pref = SharedPrefHelper(activity!!)
-        ServiceBuilder.buildService(UserService::class.java)
+        ServiceBuilder.buildService(UserService::class.java, activity!!)
             .getUserById(pref.getAccount().nis/*,1913949*/).enqueue(
                 object : Callback<ResponseLogin> {
                     override fun onResponse(
@@ -114,7 +126,7 @@ class profile_fragment : Fragment() {
 
     fun setUncompletedTodo() {
         val pref = SharedPrefHelper(activity!!)
-        ServiceBuilder.buildService(UserService::class.java)
+        ServiceBuilder.buildService(UserService::class.java, activity!!)
             .getTodoUncompleted(pref.getAccount().nis)
             .enqueue(object : Callback<DataResponseModel<List<TodoUncompleted>>> {
                 override fun onFailure(
@@ -141,7 +153,7 @@ class profile_fragment : Fragment() {
 
     fun setCompletedTodo() {
         val pref = SharedPrefHelper(activity!!)
-        ServiceBuilder.buildService(UserService::class.java).getTodoCompleted(pref.getAccount().nis)
+        ServiceBuilder.buildService(UserService::class.java, activity!!).getTodoCompleted(pref.getAccount().nis)
             .enqueue(object : Callback<DataResponseModel<List<TodoCompleted>>> {
                 override fun onFailure(
                     call: Call<DataResponseModel<List<TodoCompleted>>>,
@@ -167,7 +179,7 @@ class profile_fragment : Fragment() {
 
     fun recyclerJadwalHariIni() {
         val pref = SharedPrefHelper(activity!!).getAccount().Idkelas
-        ServiceBuilder.buildService(JadwalService::class.java)
+        ServiceBuilder.buildService(JadwalService::class.java, activity!!)
             .getJadwalByHari(pref, getCurrentDay())
             .enqueue(object : Callback<DataResponseModel<List<JadwalMapelProfile>>> {
                 override fun onFailure(
@@ -195,7 +207,7 @@ class profile_fragment : Fragment() {
 
     fun recyclerTargetProfile(){
         val pref = SharedPrefHelper.getInstance(activity!!).getAccount().nis
-        ServiceBuilder.buildService(UserService :: class.java).getTargetProfile(pref).enqueue(object : Callback<DataResponseModel<List<Target>>>{
+        ServiceBuilder.buildService(UserService :: class.java, activity!!).getTargetProfile(pref).enqueue(object : Callback<DataResponseModel<List<Target>>>{
             override fun onFailure(call: Call<DataResponseModel<List<Target>>>, t: Throwable) {
                 Toast.makeText(
                     activity!!, "Error: ${t.message}", Toast.LENGTH_SHORT

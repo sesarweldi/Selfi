@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface BelajarService {
 
-    @GET("selfi/belajar/normatif/search")
+    @GET("selfi/belajar/adaptif/search")
     fun searchBukuNormatif(
         @Query("keyword") keyword: String?
     )

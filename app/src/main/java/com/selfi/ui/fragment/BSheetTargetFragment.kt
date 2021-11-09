@@ -52,7 +52,7 @@ class BSheetTargetFragment (): BottomSheetDialogFragment(){
             }
 
             else{
-                val service = ServiceBuilder.buildService(TargetService :: class.java)
+                val service = ServiceBuilder.buildService(TargetService :: class.java, activity!!)
                 service.addTarget(
                     id_target,
                     pref_id,

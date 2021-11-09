@@ -48,7 +48,7 @@ class TargetActivity : AppCompatActivity() {
         swipe_target.isRefreshing = true
        val pref =  SharedPrefHelper.getInstance(applicationContext).getAccount()
         val service =
-            ServiceBuilder.buildService(TargetService::class.java).getTarget(pref.nis)
+            ServiceBuilder.buildService(TargetService::class.java, this@TargetActivity).getTarget(pref.nis)
 
         service.enqueue(object : Callback<DataResponseModel<List<Target>>> {
             override fun onFailure(call: Call<DataResponseModel<List<Target>>>, t: Throwable) {

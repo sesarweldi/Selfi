@@ -30,7 +30,7 @@ class BelajarActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout,viewPager2){tab, position ->
             when(position){
-                0 -> tab.text="Nora"
+                0 -> tab.text="Adaptif"
                 1 -> tab.text="Produktif"
             }
         }.attach()

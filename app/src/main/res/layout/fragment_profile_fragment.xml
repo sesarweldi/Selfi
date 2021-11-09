@@ -37,7 +37,9 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/logo_app"
+            app:civ_circle_background_color="#fff"
+            android:cropToPadding="true" />
 
 
         <LinearLayout
@@ -137,6 +139,7 @@
     </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_target_profile"
             android:layout_width="340dp"
             android:layout_height="150dp"
             android:layout_marginLeft="35dp"
@@ -172,6 +175,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_jadwal_profile"
             android:layout_width="340dp"
             android:layout_height="150dp"
             android:layout_marginLeft="35dp"

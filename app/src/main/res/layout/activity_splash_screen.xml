@@ -7,7 +7,7 @@
     tools:context=".ui.activity.SplashScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoSplash"
         android:layout_width="135dp"
         android:layout_height="135dp"
         android:layout_marginStart="8dp"
@@ -17,27 +17,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv1_splash"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="69dp"
         android:fontFamily="@font/montserrat"
         android:text="S E L F I"
         android:textColor="#5CADE0"
-        android:textSize="60sp"
+        android:textSize="61sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/logoSplash"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
+        android:id="@+id/tv2_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/montserrat"
         android:text="SELF IMPROVEMENT"
         android:textColor="#638AC7"
-        android:textSize="18sp"
+        android:textSize="21sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/logoSplash"
+        app:layout_constraintTop_toBottomOf="@+id/tv1_splash" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ class BelajarNoraFragment : Fragment() {
 
 
     fun recyclerNora(keyword: String?){
-        val service = ServiceBuilder.buildService(BelajarService:: class.java).searchBukuNormatif(keyword)
+        val service = ServiceBuilder.buildService(BelajarService:: class.java, activity!!).searchBukuNormatif(keyword)
         service.enqueue(object: Callback<DataResponseModel<List<Belajar>>>{
             override fun onFailure(call: Call<DataResponseModel<List<Belajar>>>, t: Throwable) {
                 Toast.makeText(

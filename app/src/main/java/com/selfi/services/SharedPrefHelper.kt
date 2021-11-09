@@ -12,6 +12,7 @@ class SharedPrefHelper ( val mCtx: Context){
     private val JURUSAN_KEY = "jurusan"
     private val NOHP_KEY = "nohp"
     private val PASSWORD_KEY = "password"
+    private val USER_TOKEN = "user_token"
 
 
     val sharedPref: SharedPreferences =
@@ -48,6 +49,16 @@ class SharedPrefHelper ( val mCtx: Context){
         val editor: SharedPreferences.Editor = sharedPref.edit()
         editor.clear()
         editor.apply()
+    }
+
+    fun saveAuthToken(token: String?){
+        val editor = sharedPref.edit()
+        editor.putString(USER_TOKEN, token)
+        editor.apply()
+    }
+
+    fun getAuthToken(): String? {
+        return sharedPref.getString(USER_TOKEN, null)
     }
 
     companion object {

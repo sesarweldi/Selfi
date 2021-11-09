@@ -51,7 +51,7 @@ class TargetRecylerViewAdapter(private var mValues: List<Target>, private val mC
                 val pref =
                     SharedPrefHelper.getInstance(mContext.applicationContext).getAccount().nis
 
-                val service = ServiceBuilder.buildService(TargetService::class.java)
+                val service = ServiceBuilder.buildService(TargetService::class.java, mContext)
                     .deleteTarget(pref, item.idTarget)
                 service.enqueue(object : Callback<ResponseDB> {
                     override fun onFailure(call: Call<ResponseDB>, t: Throwable) {

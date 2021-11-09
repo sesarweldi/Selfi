@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Service
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,7 @@ class TodoCompletedRecyclerAdapter(private val mValues: List<Todo>, private val 
 
     override fun onBindViewHolder(holder: TodoCompletedRecyclerAdapter.viewHolder, position: Int) {
         val item = mValues[position]
+        holder.txt_judul.setPaintFlags(holder.txt_judul.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         holder.txt_judul.text = item.kegiatan
 
 
@@ -94,7 +96,7 @@ class TodoCompletedRecyclerAdapter(private val mValues: List<Todo>, private val 
 
                 val pref =
                     SharedPrefHelper.getInstance(mContext.applicationContext).getAccount().nis
-                ServiceBuilder.buildService(TodoService:: class.java).deleteTodoCompleted(pref, item.id)
+                ServiceBuilder.buildService(TodoService:: class.java, mContext).deleteTodoCompleted(pref, item.id)
                     .enqueue(object : Callback<ResponseDB>{
                         override fun onFailure(call: Call<ResponseDB>, t: Throwable) {
                             Toast.makeText(

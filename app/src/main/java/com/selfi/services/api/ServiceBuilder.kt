@@ -1,7 +1,13 @@
 package com.selfi.services.api
 
-import com.google.gson.GsonBuilder
+
+import android.R
+import android.content.Context
+import com.selfi.services.SharedPrefHelper
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,22 +19,24 @@ object ServiceBuilder {
     const val URL = "$BASE_URL/"
 
 
-    val loggingInterceptor  = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    private val okHttp = OkHttpClient.Builder()
-        //.addInterceptor(BasicAuthInterceptor("selfi", "selfi123"))
-        .addInterceptor(loggingInterceptor)
+    private fun okHttpClient(context: Context): OkHttpClient{
+        return OkHttpClient.Builder()
+        //.addInterceptor(loggingInterceptor)
+        .addInterceptor(BasicAuthInterceptor(context))
         .build()
+    }
 
 
-    private val builder = Retrofit.Builder()
-        .baseUrl(URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttp)
+    fun <T> buildService(serviceType: Class<T>, context: Context): T {
+        val builder = Retrofit.Builder()
+            .baseUrl(URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient(context))
 
-    private val retrofit = builder.build()
+        val retrofit = builder.build()
 
-    fun <T> buildService(serviceType: Class<T>): T {
         return retrofit.create(serviceType)
     }
 

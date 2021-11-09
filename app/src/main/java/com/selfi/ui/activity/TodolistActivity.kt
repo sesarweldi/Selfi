@@ -51,7 +51,7 @@ class TodolistActivity : AppCompatActivity() {
 
      fun recyclerTodo(){
          val pref =  SharedPrefHelper.getInstance(applicationContext).getAccount().nis
-         val service = ServiceBuilder.buildService(TodoService:: class.java).getTodoUncompleted(pref)
+         val service = ServiceBuilder.buildService(TodoService:: class.java, this@TodolistActivity).getTodoUncompleted(pref)
          service.enqueue(object: Callback<DataResponseModel<List<Todo>>>{
              override fun onFailure(call: Call<DataResponseModel<List<Todo>>>, t: Throwable) {
                  Toast.makeText(applicationContext, "Error : ${t.message}", Toast.LENGTH_SHORT)

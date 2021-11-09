@@ -78,7 +78,7 @@ class home_fragment : Fragment() {
 
     fun initUser() {
         val pref = SharedPrefHelper(activity!!)
-        ServiceBuilder.buildService(UserService::class.java)
+        ServiceBuilder.buildService(UserService::class.java, activity!!)
             .getUserById(pref.getAccount().nis/*,1913949*/).enqueue(
                 object : Callback<ResponseLogin> {
                     override fun onResponse(

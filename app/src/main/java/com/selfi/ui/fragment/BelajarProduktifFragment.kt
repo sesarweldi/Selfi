@@ -42,7 +42,7 @@ class BelajarProduktifFragment : Fragment() {
     }
 
     fun recyclerProduktif(keyword: String?){
-        val service = ServiceBuilder.buildService(BelajarService:: class.java).searchBukuProduktif(keyword)
+        val service = ServiceBuilder.buildService(BelajarService:: class.java,activity!!).searchBukuProduktif(keyword)
         service.enqueue(object: Callback<DataResponseModel<List<Belajar>>>{
             override fun onFailure(call: Call<DataResponseModel<List<Belajar>>>, t: Throwable) {
                 Toast.makeText(

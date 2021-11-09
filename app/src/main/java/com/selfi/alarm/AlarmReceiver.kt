@@ -4,12 +4,15 @@ import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.media.MediaPlayer
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.selfi.R
+import com.selfi.ui.activity.TodolistActivity
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -42,16 +45,24 @@ class AlarmReceiver: BroadcastReceiver() {
 
     fun showAlarmNotification(context: Context, title: String, message: String,notifId: Int ){
         val notificationManager:NotificationManager =  context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
         val alarmSound: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val mp: MediaPlayer = MediaPlayer.create(context, alarmSound)
+        mp.start()
+
+        val i = Intent(context, TodolistActivity:: class.java)
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        val pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
+
         val mBuilder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.logoo)
             .setContentTitle(title)
             .setContentText(message)
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
-            .setSound(alarmSound)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
@@ -77,6 +88,17 @@ class AlarmReceiver: BroadcastReceiver() {
         val requestCode: Int = ID
 
         return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE ) != null
+    }
+
+    fun cancelAlarm(context: Context, type: String){
+        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent: Intent = Intent(context, AlarmReceiver :: class.java)
+        val requestCode: Int = ID
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT)
+
+        if(alarmManager != null){
+            alarmManager.cancel(pendingIntent)
+        }
     }
 
 
