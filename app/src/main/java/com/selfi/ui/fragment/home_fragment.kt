@@ -39,7 +39,6 @@ class home_fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val cardBelajar:CardView = findViewById(R.id.card_main_belajar)
         pref_id = SharedPrefHelper(getActivity()!!.applicationContext).getAccount().nis
 
 

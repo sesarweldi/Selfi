@@ -23,7 +23,6 @@ import retrofit2.Response
 class JadwalHariRecyclerAdapter(
     private val listHari: List<JadwalHari>,
     private val mContext: Context
-   /* private val listMapel: List<JadwalHari.JadwalMapel>*/
 ) :
     RecyclerView.Adapter<JadwalHariRecyclerAdapter.ListViewHolder>() {
 

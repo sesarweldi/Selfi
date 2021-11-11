@@ -21,7 +21,6 @@ import retrofit2.Response
 
 class MotivasiDetailActivity : AppCompatActivity() {
 
-    private var id_motivasi: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,19 +37,7 @@ class MotivasiDetailActivity : AppCompatActivity() {
             .load(intent.getStringExtra("gambar"))
             .apply(requestOptions)
             .into(img_detail_motivasi)
-        // id_motivasi = intent.getIntExtra("motivasi_id", 0)
-
-
     }
 }
 
-//Toast.makeText(
-//this@MotivasiDetailActivity,
-//"Error : ${t.message}",
-//Toast.LENGTH_SHORT
-//)
-//.show()
-//Log.e("onFailure", t.message!!)
 
-//val motivasi: Motivasi = response.body()!!
-//txt_deskripsi_motivasi.text = motivasi.deskripsi

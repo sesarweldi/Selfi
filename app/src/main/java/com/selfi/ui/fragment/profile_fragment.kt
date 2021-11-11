@@ -55,7 +55,6 @@ class profile_fragment : Fragment() {
         exitButton()
         setCompletedTodo()
         setUncompletedTodo()
-       // setTargetProfile()
         recyclerJadwalHariIni()
         recyclerTargetProfile()
 

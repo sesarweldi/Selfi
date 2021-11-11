@@ -135,7 +135,6 @@ class TodoCompletedRecyclerAdapter(private val mValues: List<Todo>, private val 
         val txt_hari: TextView = mView.findViewById(R.id.tv_hari_todo_selesai)
         val txt_judul: TextView = mView.findViewById(R.id.tv_judul_todo_selesai)
 
-        val cb_todo: CheckBox = mView.findViewById(R.id.cb_todo_selesai)
         val card_todo: CardView = mView.findViewById(R.id.card_item_todo_completed)
     }
 }

@@ -42,10 +42,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-  /*   fun floating_button(view: View){
-        supportFragmentManager.beginTransaction().replace(R.id.root_layout,home_fragment()).commit()
-         chipNavigationBar.setItemSelected(R.id.notif,false)
-         chipNavigationBar.setItemSelected(R.id.profile,false)
-    }*/
 }
 

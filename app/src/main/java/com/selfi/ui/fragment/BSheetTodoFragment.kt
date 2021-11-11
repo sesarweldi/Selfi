@@ -53,17 +53,7 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
-
-
         pref_id = SharedPrefHelper(activity!!.applicationContext).getAccount().nis
-
-        /*
-               dateDialog()
-               timeDialog()
-       */
 
         dateDialog()
         timeDialog()
