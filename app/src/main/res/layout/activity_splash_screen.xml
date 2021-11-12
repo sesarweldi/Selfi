@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/tv1_splash"
         android:layout_width="wrap_content"
-        android:layout_height="69dp"
+        android:layout_height="74dp"
         android:fontFamily="@font/montserrat"
         android:text="S E L F I"
         android:textColor="#5CADE0"
