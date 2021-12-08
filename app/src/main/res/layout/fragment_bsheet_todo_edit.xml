@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bottom_sheet_background"
-    android:id="@+id/btnsheetTodoContainer">
+    android:orientation="vertical">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -12,60 +12,61 @@
         android:layout_marginLeft="35dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Masukkan tugas baru kamu"
+        android:text="Edit Judul Todolist"
         android:textColor="#000"
-        android:textSize="13sp" />
+        android:textSize="13sp"/>
 
     <EditText
-        android:id="@+id/edt_inputTodo"
+        android:id="@+id/et_judul_edit_todo"
         android:layout_width="320dp"
         android:layout_height="34dp"
         android:layout_marginLeft="30dp"
         android:background="#4DC4C4C4"
         android:fontFamily="@font/poppins_medium"
-        android:hint="Masukkan tugas baru kamu"
+        android:hint="Masukkan Judul"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textSize="14sp"
         android:textColor="#000"
         android:textColorHint="#4D000000"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:padding="5dp"/>
 
     <TextView
-        android:id="@+id/txt_nis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="35dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Masukkan Tanggal"
         android:textColor="#000"
+        android:layout_marginTop="12dp"
         android:textSize="13sp" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-    <EditText
-        android:id="@+id/edt_inputTanggalTodo"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:layout_marginLeft="30dp"
-        android:background="#4DC4C4C4"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="0000-00-00"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textSize="14sp"
-        android:inputType="date"
-        android:textColor="#000"
-        android:textColorHint="#4D000000"/>
-
+        <EditText
+            android:id="@+id/et_tanggal_edit_todo"
+            android:layout_width="128dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="30dp"
+            android:background="#4DC4C4C4"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="0000-00-00"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:inputType="date"
+            android:textColor="#000"
+            android:textColorHint="#4D000000"
+            android:padding="5dp"
+            android:maxLines="1"/>
 
         <ImageView
-            android:id="@+id/img_edt_tanggal_todo"
+            android:id="@+id/img_edt_tanggal"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
@@ -79,52 +80,51 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="35dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Jam"
+        android:text="Masukkan Tanggal"
         android:textColor="#000"
-        android:textSize="13sp" />
-
+        android:layout_marginTop="12dp"
+        android:textSize="13sp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/edt_inputJamTodo"
-        android:layout_width="70dp"
-        android:layout_height="34dp"
-        android:layout_marginLeft="30dp"
-        android:background="#4DC4C4C4"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="00:00"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textSize="14sp"
-        android:inputType="date"
-        android:textColor="#000"
-        android:textColorHint="#4D000000"/>
+        <EditText
+            android:id="@+id/et_jam_edit_todo"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="30dp"
+            android:background="#4DC4C4C4"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="00:00"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:inputType="date"
+            android:textColor="#000"
+            android:textColorHint="#4D000000"
+            android:padding="5dp"
+            android:maxLines="1"/>
 
         <ImageView
-            android:id="@+id/img_edt_jam_todo"
+            android:id="@+id/img_edt_jam"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_time"
             android:layout_gravity="center"/>
-
-
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_simpanTodo"
+        android:id="@+id/btn_simpan_edit_todo"
         android:layout_width="103dp"
         android:layout_height="45dp"
         android:background="@drawable/roundedshape"
-        android:layout_below="@+id/edt_passwordLogin"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:layout_centerInParent="true"
         android:text="Simpan"
         android:textColor="#fff"
@@ -133,8 +133,7 @@
         android:textAllCaps="false"
         android:layout_gravity="end"
         android:layout_marginEnd="57dp"
-        android:layout_marginBottom="38dp"/>
-
+        android:layout_marginBottom="64dp"/>
 
 
 </LinearLayout>

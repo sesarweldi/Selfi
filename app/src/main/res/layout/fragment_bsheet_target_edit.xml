@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Edit Judul Target"
+        android:textColor="#000"
+        android:textSize="13sp"/>
+
+    <EditText
+        android:id="@+id/et_judul_edit_target"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="Masukkan Judul"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Deskripsi Target"
+        android:textColor="#000"
+        android:textSize="13sp"/>
+
+    <EditText
+        android:id="@+id/et_deskripsi_edit_target"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:background="#4DC4C4C4"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="Masukkan Kegiatan"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:textColorHint="#4D000000"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="64dp"
+        android:layout_gravity="end">
+
+
+
+
+        <Button
+            android:id="@+id/btn_hapus_edit_target"
+            android:layout_width="103dp"
+            android:layout_height="45dp"
+            android:background="@drawable/roundedshape"
+            android:layout_marginTop="24dp"
+            android:layout_centerInParent="true"
+            android:text="Hapus"
+            android:textColor="#fff"
+            android:theme="@style/MyButtonStyle"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"/>
+
+        <Button
+            android:id="@+id/btn_simpan_edit_target"
+            android:layout_width="103dp"
+            android:layout_height="45dp"
+            android:background="@drawable/roundedshape"
+            android:layout_marginTop="24dp"
+            android:layout_centerInParent="true"
+            android:text="Simpan"
+            android:textColor="#fff"
+            android:theme="@style/MyButtonStyle"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -55,6 +55,10 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
 
         pref_id = SharedPrefHelper(activity!!.applicationContext).getAccount().nis
 
+
+
+
+
         dateDialog()
         timeDialog()
 
@@ -148,6 +152,10 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
         edt_inputTanggalTodo.setOnClickListener {
             DatePickerDialog(activity!!, dateSetListener, mYear,mMonth, mDay).show()
         }
+
+        img_edt_tanggal_todo.setOnClickListener {
+            DatePickerDialog(activity!!, dateSetListener, mYear,mMonth, mDay).show()
+        }
     }
     
     fun timeDialog(){
@@ -164,6 +172,10 @@ class BSheetTodoFragment() : BottomSheetDialogFragment() {
         }
         
         edt_inputJamTodo.setOnClickListener {
+            TimePickerDialog(activity!!, timeSetListener, mHour, mMinute, true).show()
+        }
+
+        img_edt_jam_todo.setOnClickListener {
             TimePickerDialog(activity!!, timeSetListener, mHour, mMinute, true).show()
         }
     }

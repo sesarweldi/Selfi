@@ -28,7 +28,7 @@ class AlarmReceiver: BroadcastReceiver() {
 
 
 
-    val ID: Int = 100
+    val ID: Int = System.currentTimeMillis().toInt()
 
 
 
@@ -90,11 +90,11 @@ class AlarmReceiver: BroadcastReceiver() {
         return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE ) != null
     }
 
-    fun cancelAlarm(context: Context, type: String){
+    fun  cancelAlarm(context: Context, type: String){
         val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent: Intent = Intent(context, AlarmReceiver :: class.java)
         val requestCode: Int = ID
-        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, requestCode,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
         if(alarmManager != null){
             alarmManager.cancel(pendingIntent)

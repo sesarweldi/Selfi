@@ -15,17 +15,28 @@ interface TargetService {
         @Field("nis") nis: Int,
         @Field("judul_target") judul_target: String,
         @Field("deskripsi_target") deskripsi_target: String
-    ) : Call<ResponseDB>
+    ): Call<ResponseDB>
 
     @GET("/selfi/target/{nis}")
     fun getTarget(
         @Path("nis") nis: Int
-    ) : Call <DataResponseModel<List<Target>>>
+    ): Call<DataResponseModel<List<Target>>>
 
     @DELETE("/selfi/target/{nis}/{id_target}")
     fun deleteTarget(
         @Path("nis") nis: Int,
         @Path("id_target") id_target: Int
-    ) : Call <ResponseDB>
+    ): Call<ResponseDB>
+
+
+    @FormUrlEncoded
+    @PUT("selfi/target/{nis}/{id_target}")
+    fun updateTarget(
+        @Path("id_target") id_target: Int,
+        @Path("nis") nis: Int,
+        @Field("judul_target") judul_target: String,
+        @Field("deskripsi_target") deskripsi_target: String
+    ): Call<ResponseDB>
+
 }
 

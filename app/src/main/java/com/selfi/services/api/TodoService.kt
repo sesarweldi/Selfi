@@ -41,5 +41,17 @@ interface TodoService {
         @Path("nis") nis: Int,
         @Path("id") id: Int
     ): Call<ResponseDB>
+
+    @FormUrlEncoded
+    @PUT("selfi/todolist/{nis}/{id}")
+    fun editTodo(
+        @Path("nis") nis: Int,
+        @Path("id") id: Int,
+        @Field("status") status: String,
+        @Field("nama_kegiatan")judul: String,
+        @Field("tanggal")tanggal: LocalDateTime
+    ): Call<ResponseDB>
+
+
 }
 

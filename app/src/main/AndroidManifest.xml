@@ -14,9 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.TodolistCompletedActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.activity.SplashScreen"
+        <activity android:name=".ui.activity.TodolistEditActivity"></activity>
+        <activity
+            android:name=".ui.activity.TodolistCompletedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +57,6 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait" />
-
 
         <meta-data
             android:name="preloaded_fonts"
