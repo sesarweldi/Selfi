@@ -23,7 +23,7 @@
 
     <View
         android:layout_width="77dp"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:layout_marginLeft="30dp"
         android:background="@drawable/roundedshape" />
 

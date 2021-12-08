@@ -9,7 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Edit Target"
+        android:textColor="#000"
+        android:textSize="34sp"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="77dp"
+        android:layout_height="3dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/roundedshape" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="42dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Edit Judul Target"
         android:textColor="#000"
@@ -60,7 +78,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="34dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="38dp"
         android:layout_gravity="end">
 
 
