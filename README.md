@@ -51,7 +51,7 @@ This repository is the result of KAMP Kreatif SMK Indonesia (Smart Apps for Scho
 </p>
 
 
-## Feature: 
+## Tech Stack: 
 
 - Using Retrofit to request api network
 - Using Glide for load and caching image from url
